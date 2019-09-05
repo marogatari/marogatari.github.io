@@ -22,7 +22,7 @@
     <meta name="description" content="Not That Available">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Git Alias Backup · Moedrian&#39;s Bron-Yr-Aur</title>
+    <title>Open Systems Interconnection(OSI) Model Explained! · Moedrian&#39;s Bron-Yr-Aur</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Moedrian&#39;s Bron-Yr-Aur</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Git Alias Backup</a>
+                <a href="#" class="post-name">Open Systems Interconnection(OSI) Model Explained!</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Git Alias Backup
+            Open Systems Interconnection(OSI) Model Explained!
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,20 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Git">Git</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "FAQ">FAQ</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "ComputerNetwork">ComputerNetwork</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">114</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">939</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/09/05</span>
+                    <span class="post-intro-time">2019/09/06</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,12 +403,218 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="Set-Some-Convenient-Alias-For-Git"><a href="#Set-Some-Convenient-Alias-For-Git" class="headerlink" title="Set Some Convenient Alias For Git"></a>Set Some Convenient Alias For Git</h1><h2 id="User-Information-First"><a href="#User-Information-First" class="headerlink" title="User Information First"></a>User Information First</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;moedrian&quot;</span><br><span class="line"></span><br><span class="line">git config --global user.email &quot;xxx.xx@xxx.xx&quot;</span><br><span class="line"></span><br><span class="line">git config --global core.editor vim</span><br></pre></td></tr></table></figure>
+        <h1 id="Open-Systems-Interconnection-Model"><a href="#Open-Systems-Interconnection-Model" class="headerlink" title="Open Systems Interconnection Model"></a>Open Systems Interconnection Model</h1><h2 id="Layers"><a href="#Layers" class="headerlink" title="Layers"></a>Layers</h2><center><pre>
++--------------------+-------------------+--------------+
+| Application Layer  |                   |              |
++--------------------+                   |              |
+| Presentation Layer | Data              |              |
++--------------------+                   | Host Layers  |
+| Session Layer      |                   |              |
++--------------------+-------------------+              |
+| Transport Layer    | Segment, Datagram |              |
++--------------------+-------------------+--------------+
+| Network Layer      | Packet            |              |
++--------------------+-------------------+              |
+| Data Link Layer    | Frame             | Media Layers |
++--------------------+-------------------+              |
+| Physical Layer     | Symbol            |              |
++--------------------+-------------------+--------------+
+</pre></center>
 
-<h2 id="Simple-Commands"><a href="#Simple-Commands" class="headerlink" title="Simple Commands"></a>Simple Commands</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.co checkout</span><br><span class="line"></span><br><span class="line">git config --global alias.br branch</span><br><span class="line"></span><br><span class="line">git config --global alias.ct commit</span><br><span class="line"></span><br><span class="line">git config --global alias.st status</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1-Physical-Layer"><a href="#1-Physical-Layer" class="headerlink" title="1. Physical Layer"></a>1. Physical Layer</h3><h4 id="1-1-Role"><a href="#1-1-Role" class="headerlink" title="1.1 Role"></a>1.1 Role</h4><blockquote>
+<p>Actual physical connection between the devices. When receiving data, this layer will get the signal received and convert it into bits then send them to Data Link Layer.</p>
+</blockquote>
+<h4 id="1-2-The-form-of-information"><a href="#1-2-The-form-of-information" class="headerlink" title="1.2 The form of information"></a>1.2 The form of information</h4><p>What is transmitted in this layer is <strong>bit</strong>, i.e.</p>
+<center><pre>
++----+----+----+
+|0011|0100|1001|
++----+----+----+
+</pre></center>
 
-<h2 id="A-Little-Complex"><a href="#A-Little-Complex" class="headerlink" title="A Little Complex"></a>A Little Complex</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.last &quot;log -1 HEAD&quot;</span><br><span class="line"></span><br><span class="line">git config --global alias.unstage &quot;reset HEAD --&quot;</span><br><span class="line"></span><br><span class="line">git config --global alias.prog &quot;log --pretty=format:&apos;%h - %an, %ar: %s&apos;&quot;</span><br><span class="line"></span><br><span class="line">git config --global alias.trog &quot;log --oneline --decorate --graph&quot;</span><br><span class="line"></span><br><span class="line">git config --global alias.alltrog &quot;log --oneline --decorate --graph --all&quot;</span><br></pre></td></tr></table></figure>
-
+<h4 id="1-3-The-functions-of-Physical-Layer"><a href="#1-3-The-functions-of-Physical-Layer" class="headerlink" title="1.3 The functions of Physical Layer"></a>1.3 The functions of Physical Layer</h4><table>
+<thead>
+<tr>
+<th align="left">Function</th>
+<th align="left">Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Bit Synchronization</td>
+<td align="left">Bit level synchronization between  sender and receiver via a clock.</td>
+</tr>
+<tr>
+<td align="left">Bit Rate Control</td>
+<td align="left">Transmission rate i.e. the number of bits sent/received per second.</td>
+</tr>
+<tr>
+<td align="left">Physical Topologies</td>
+<td align="left">The way in which the different devices/nodes arranged in a network, i.e. bus, star or mesh topology.</td>
+</tr>
+<tr>
+<td align="left">Transmission Mode</td>
+<td align="left">The way in which data flows between the two connected devices. Simplex, half-duplex and full-duplex</td>
+</tr>
+</tbody></table>
+<h4 id="1-4-Examples"><a href="#1-4-Examples" class="headerlink" title="1.4 Examples"></a>1.4 Examples</h4><p>Hub, Repeater, Modem, Cables are all in the Physical layer. Check those jargons <a href="../Jargon/osi_jargon.md">here</a>.</p>
+<h3 id="2-Data-Link-Layer"><a href="#2-Data-Link-Layer" class="headerlink" title="2. Data Link Layer"></a>2. Data Link Layer</h3><h4 id="2-1-Role"><a href="#2-1-Role" class="headerlink" title="2.1 Role"></a>2.1 Role</h4><blockquote>
+<p>The data link layer provides node-to-node data transfer—a link between two directly connected nodes.</p>
+</blockquote>
+<blockquote>
+<p>It detects and possibly corrects errors that may occur in the physical layer.<br>It defines the protocol to establish and terminate a connection between two physically connected devices.<br>It also defines the protocol for flow control between them.</p>
+</blockquote>
+<p>And it has two sublayers:</p>
+<ul>
+<li>Medium Access Control (MAC) layer<blockquote>
+<p>responsible for controlling how devices in a network gain access to a medium and permission to transmit data</p>
+</blockquote>
+</li>
+<li>Logical Link Control (LLC) layer<blockquote>
+<p>responsible for identifying and encapsulating network layer protocols, and controls error checking and frame synchronization</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="2-2-The-form-of-information"><a href="#2-2-The-form-of-information" class="headerlink" title="2.2 The form of information"></a>2.2 The form of information</h4><p>Frame.</p>
+<blockquote>
+<p>In the OSI model of computer networking, a frame is the protocol data unit at the data link layer. Frames are the result of the final layer of encapsulation before the data is transmitted over the physical layer.</p>
+</blockquote>
+<blockquote>
+<p>A frame is “the unit of transmission in a link layer protocol, and consists of a link layer header followed by a packet.” Each frame is separated from the next by an interframe gap.</p>
+</blockquote>
+<blockquote>
+<p>A frame is a series of bits generally composed of frame synchronization bits, the packet payload, and a frame check sequence.</p>
+</blockquote>
+<h4 id="2-3-The-functions-of-Data-Link-Layer"><a href="#2-3-The-functions-of-Data-Link-Layer" class="headerlink" title="2.3 The functions of Data Link Layer"></a>2.3 The functions of Data Link Layer</h4><table>
+<thead>
+<tr>
+<th align="left">Function</th>
+<th align="left">Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Framing</td>
+<td align="left">It provides a way for sender to transmit a set of bits that are meaningful to the receiver. It is implemented by special bit patterns in the beginning and the end of the frame.</td>
+</tr>
+<tr>
+<td align="left">Physical Addressing</td>
+<td align="left">DLL adds MAC addresses of sender and/or receiver in the header of each frame.</td>
+</tr>
+<tr>
+<td align="left">Error Control</td>
+<td align="left">DLL detects and retransmit damaged or lost frames using mechanism built inside the layer.</td>
+</tr>
+<tr>
+<td align="left">Flow Control</td>
+<td align="left">The data rate <em>must</em> be constant between sender and receiver. Flow control coordinates the amount of data on both two sides.</td>
+</tr>
+<tr>
+<td align="left">Access Control</td>
+<td align="left">Suppose there’s a single channel shared by multi devices, the MAC sublayer helps determine which device has control over the single channel at a given time.</td>
+</tr>
+</tbody></table>
+<h4 id="2-4-Examples"><a href="#2-4-Examples" class="headerlink" title="2.4 Examples"></a>2.4 Examples</h4><p>Switches, Bridges.</p>
+<h3 id="3-Network-Layer"><a href="#3-Network-Layer" class="headerlink" title="3. Network Layer"></a>3. Network Layer</h3><h4 id="3-1-Role"><a href="#3-1-Role" class="headerlink" title="3.1 Role"></a>3.1 Role</h4><blockquote>
+<p>The network layer provides the functional and procedural means of transferring variable length data sequences (called packets) from one node to another connected in “different networks”.</p>
+</blockquote>
+<blockquote>
+<p> It also takes care of packet routing i.e. selection of the shortest path to transmit the packet, from the number of routes available. The sender &amp; receiver’s IP address are placed in the header by network layer.</p>
+</blockquote>
+<h4 id="3-2-Functions-of-Network-Layer"><a href="#3-2-Functions-of-Network-Layer" class="headerlink" title="3.2 Functions of Network Layer"></a>3.2 Functions of Network Layer</h4><table>
+<thead>
+<tr>
+<th align="left">Function</th>
+<th align="left">Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Routing</td>
+<td align="left">The Network Layer determines which route is suitable from source to destination.</td>
+</tr>
+<tr>
+<td align="left">Logical Addressing</td>
+<td align="left">The Network Layer maintains an address scheme to identify devices on internetwork uniquely.</td>
+</tr>
+</tbody></table>
+<h4 id="3-3-The-form-of-information"><a href="#3-3-The-form-of-information" class="headerlink" title="3.3 The form of information"></a>3.3 The form of information</h4><p>Packet. A packet consists of control information and user data, which is also known as payload.</p>
+<h4 id="3-4-Examples"><a href="#3-4-Examples" class="headerlink" title="3.4 Examples"></a>3.4 Examples</h4><p>Routers.</p>
+<hr>
+<h3 id="4-Transport-Layer"><a href="#4-Transport-Layer" class="headerlink" title="4. Transport Layer"></a>4. Transport Layer</h3><h4 id="4-1-Role"><a href="#4-1-Role" class="headerlink" title="4.1 Role"></a>4.1 Role</h4><p>End to End delivery of the complete message. Transport layer also provides the acknowledgement of the successful data transmission and re-transmits the data if an error is found.</p>
+<h4 id="4-2-Functions-of-Transport-Layer"><a href="#4-2-Functions-of-Transport-Layer" class="headerlink" title="4.2 Functions of Transport Layer"></a>4.2 Functions of Transport Layer</h4><table>
+<thead>
+<tr>
+<th align="left">Function</th>
+<th align="left">Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Segmentation and Desegmentation (Reassembly)</td>
+<td align="left">This layer accepts the message from Session Layer then breaks message into small units. The destination station within this layer will reassembly these units.</td>
+</tr>
+<tr>
+<td align="left">Service Point Addressing</td>
+<td align="left">To deliver the message to correct process.</td>
+</tr>
+</tbody></table>
+<h4 id="4-3-The-form-of-information"><a href="#4-3-The-form-of-information" class="headerlink" title="4.3 The form of information"></a>4.3 The form of information</h4><p>Segment.</p>
+<h4 id="4-4-Examples"><a href="#4-4-Examples" class="headerlink" title="4.4 Examples"></a>4.4 Examples</h4><p>The Transmission Control Protocol (TCP) and the User Datagram Protocol are commonly categorized as layer-4 protocols within OSI.</p>
+<hr>
+<h3 id="5-Session-Layer"><a href="#5-Session-Layer" class="headerlink" title="5. Session Layer"></a>5. Session Layer</h3><h4 id="5-1-Role"><a href="#5-1-Role" class="headerlink" title="5.1 Role"></a>5.1 Role</h4><ul>
+<li>Connection establishment </li>
+<li>Maintenance of sessions</li>
+<li>Authentication</li>
+<li>Security Assurance</li>
+</ul>
+<h4 id="5-2-The-functions-of-Session-Layer"><a href="#5-2-The-functions-of-Session-Layer" class="headerlink" title="5.2 The functions of Session Layer"></a>5.2 The functions of Session Layer</h4><table>
+<thead>
+<tr>
+<th align="left">Function</th>
+<th align="left">Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Session establishment, maintenance and termination</td>
+<td align="left">This layer allow the two processes to establish, use and terminate a connection.</td>
+</tr>
+<tr>
+<td align="left">Synchronization</td>
+<td align="left">This layer allows a process to add checkpoints which are considered as synchronization points into the data to identify the error so that the integrity of data can be kept.</td>
+</tr>
+<tr>
+<td align="left">Dialog Controller</td>
+<td align="left">To allow two systems start a simplex, half-duplex or full-duplex connection.</td>
+</tr>
+</tbody></table>
+<h4 id="5-3-Examples"><a href="#5-3-Examples" class="headerlink" title="5.3 Examples"></a>5.3 Examples</h4><p>Application environments that use Remote Procedure Calls (RPC).</p>
+<h3 id="6-Presentation-Layer"><a href="#6-Presentation-Layer" class="headerlink" title="6. Presentation Layer"></a>6. Presentation Layer</h3><h4 id="6-1-Role"><a href="#6-1-Role" class="headerlink" title="6.1 Role"></a>6.1 Role</h4><p>The data from Application Layer is extracted here and manipulated as per the required format to transmit over the network.</p>
+<h4 id="6-2-The-functions-of-Presentation-Layer"><a href="#6-2-The-functions-of-Presentation-Layer" class="headerlink" title="6.2 The functions of Presentation Layer"></a>6.2 The functions of Presentation Layer</h4><table>
+<thead>
+<tr>
+<th align="left">Function</th>
+<th align="left">Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Translation</td>
+<td align="left">E.g. ASCII to EBCDIC</td>
+</tr>
+<tr>
+<td align="left">Encryption/Decryption</td>
+<td align="left">E.g. Base64, Sha1, etc</td>
+</tr>
+<tr>
+<td align="left">Compression/Extraction</td>
+<td align="left">To reduces the number of bits.</td>
+</tr>
+</tbody></table>
+<h3 id="7-Application-Layer"><a href="#7-Application-Layer" class="headerlink" title="7. Application Layer"></a>7. Application Layer</h3><h4 id="7-1-Role"><a href="#7-1-Role" class="headerlink" title="7.1 Role"></a>7.1 Role</h4><p>To produce the data.</p>
+<h4 id="7-2-The-functions-of-Application-Layer"><a href="#7-2-The-functions-of-Application-Layer" class="headerlink" title="7.2 The functions of Application Layer"></a>7.2 The functions of Application Layer</h4><ul>
+<li>Network Virtual Terminal</li>
+<li>FTAM-File transfer access and management</li>
+<li>Mail Services</li>
+<li>Directory Services</li>
+</ul>
+<h4 id="7-3-Examples"><a href="#7-3-Examples" class="headerlink" title="7.3 Examples"></a>7.3 Examples</h4><p>Browsers, Messengers, etc.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.geeksforgeeks.org/layers-osi-model/" target="_blank" rel="noopener">Computer Network | Layers of OSI Model</a></p>
 
     </article>
     <!-- license  -->
@@ -415,17 +623,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/09/05/raspberry-pi-raspbian/" title= "Open Up, Install Raspbian to Raspberry Pi">
-                    <div class="nextTitle">Open Up, Install Raspbian to Raspberry Pi</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/09/05/install-lamp-to-centos-7/" title= "Install LAMP Stack on CentOS 7">
-                    <div class="prevTitle">Install LAMP Stack on CentOS 7</div>
+                <a href= "/2019/09/06/linux-dir/" title= "Linux Directories Description">
+                    <div class="prevTitle">Linux Directories Description</div>
                 </a>
             
         </li>
@@ -545,7 +748,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Set-Some-Convenient-Alias-For-Git"><span class="toc-number">1.</span> <span class="toc-text">Set Some Convenient Alias For Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#User-Information-First"><span class="toc-number">1.1.</span> <span class="toc-text">User Information First</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Simple-Commands"><span class="toc-number">1.2.</span> <span class="toc-text">Simple Commands</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Little-Complex"><span class="toc-number">1.3.</span> <span class="toc-text">A Little Complex</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Open-Systems-Interconnection-Model"><span class="toc-number">1.</span> <span class="toc-text">Open Systems Interconnection Model</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Layers"><span class="toc-number">1.1.</span> <span class="toc-text">Layers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Physical-Layer"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. Physical Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Role"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.1 Role</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-The-form-of-information"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">1.2 The form of information</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-The-functions-of-Physical-Layer"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">1.3 The functions of Physical Layer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-Examples"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">1.4 Examples</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Data-Link-Layer"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. Data Link Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Role"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">2.1 Role</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-The-form-of-information"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.2 The form of information</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-The-functions-of-Data-Link-Layer"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">2.3 The functions of Data Link Layer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Examples"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">2.4 Examples</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Network-Layer"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. Network Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-Role"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">3.1 Role</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-Functions-of-Network-Layer"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">3.2 Functions of Network Layer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-The-form-of-information"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">3.3 The form of information</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-Examples"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">3.4 Examples</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Transport-Layer"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. Transport Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-Role"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">4.1 Role</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-Functions-of-Transport-Layer"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">4.2 Functions of Transport Layer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-The-form-of-information"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">4.3 The form of information</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-Examples"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">4.4 Examples</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Session-Layer"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. Session Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-Role"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">5.1 Role</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-The-functions-of-Session-Layer"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">5.2 The functions of Session Layer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-Examples"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">5.3 Examples</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Presentation-Layer"><span class="toc-number">1.1.6.</span> <span class="toc-text">6. Presentation Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-Role"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">6.1 Role</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-The-functions-of-Presentation-Layer"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">6.2 The functions of Presentation Layer</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Application-Layer"><span class="toc-number">1.1.7.</span> <span class="toc-text">7. Application Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-Role"><span class="toc-number">1.1.7.1.</span> <span class="toc-text">7.1 Role</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-The-functions-of-Application-Layer"><span class="toc-number">1.1.7.2.</span> <span class="toc-text">7.2 The functions of Application Layer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-Examples"><span class="toc-number">1.1.7.3.</span> <span class="toc-text">7.3 Examples</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.2.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
