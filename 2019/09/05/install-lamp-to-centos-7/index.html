@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Moedrian">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Moedrian">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="Not That Available">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Install LAMP Stack on CentOS 7 · Moedrian&#39;s Bron-Yr-Aur</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Moedrian&#39;s Bron-Yr-Aur</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Install LAMP Stack on CentOS 7</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Moedrian's Bron-Yr-Aur</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Install LAMP Stack on CentOS 7
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "LAMP">LAMP</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Server">Server</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CentOS">CentOS</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PHP">PHP</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">788</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/09/05</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="LAMP-Stack-Installation-on-CentOS-7-64-Bit"><a href="#LAMP-Stack-Installation-on-CentOS-7-64-Bit" class="headerlink" title="LAMP Stack Installation on CentOS 7 64 Bit"></a>LAMP Stack Installation on CentOS 7 64 Bit</h1><h2 id="Before-you-start…"><a href="#Before-you-start…" class="headerlink" title="Before you start…"></a>Before you start…</h2><ul>
+<li>Basic usage of vim, if none, use nano instead</li>
+</ul>
+<h2 id="1-Install-essential-repositories-and-editor"><a href="#1-Install-essential-repositories-and-editor" class="headerlink" title="1. Install essential repositories and editor"></a>1. Install essential repositories and editor</h2><h3 id="1-1-Update"><a href="#1-1-Update" class="headerlink" title="1.1 Update"></a>1.1 Update</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum update</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-Install-EPEL-repository"><a href="#1-2-Install-EPEL-repository" class="headerlink" title="1.2 Install EPEL repository"></a>1.2 Install EPEL repository</h3><blockquote>
+<p>Extra Packages for Enterprise Linux (or EPEL) is a Fedora Special<br>Interest Group that creates, maintains, and manages a high quality<br>set of additional packages for Enterprise Linux, including, but not<br>limited to, Red Hat Enterprise Linux (RHEL), CentOS and Scientific<br>Linux (SL), Oracle Linux (OL).</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-<span class="number">7</span>.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-Install-Remi’s-RPM-repository"><a href="#1-2-Install-Remi’s-RPM-repository" class="headerlink" title="1.2.Install Remi’s RPM repository"></a>1.2.Install Remi’s RPM repository</h3><blockquote>
+<p>Remi is a repository providing the latest versions of the PHP stack,<br>full featured, and some other software, to the Fedora and Enterprise<br>Linux (RHEL, CentOS, Oracle, Scientific Linux, …) users.</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install http://rpms.remirepo.<span class="built_in">net</span>/enterprise/remi-release-<span class="number">7</span>.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-Check-repo-list"><a href="#1-4-Check-repo-list" class="headerlink" title="1.4 Check repo list"></a>1.4 Check repo list</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum repolist</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-Install-yum-utils-package-for-the-yum-config-manager-command"><a href="#1-5-Install-yum-utils-package-for-the-yum-config-manager-command" class="headerlink" title="1.5 Install yum-utils package (for the yum-config-manager command)"></a>1.5 Install yum-utils package (for the yum-config-manager command)</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install yum-utils -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-Update-it-again"><a href="#1-5-Update-it-again" class="headerlink" title="1.5 Update it again"></a>1.5 Update it again</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum update</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-Install-Vim"><a href="#1-6-Install-Vim" class="headerlink" title="1.6 Install Vim"></a>1.6 Install Vim</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install vim -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Apache"><a href="#2-Apache" class="headerlink" title="2. Apache"></a>2. Apache</h2><h3 id="2-1-Install-Apache-and-enable-httpd-service"><a href="#2-1-Install-Apache-and-enable-httpd-service" class="headerlink" title="2.1 Install Apache and enable httpd service"></a>2.1 Install Apache and enable httpd service</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install httpd -y</span><br><span class="line">$ sudo systemctl <span class="built_in">start</span> httpd.service</span><br><span class="line">$ sudo systemctl enable httpd.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Test-Apache-Installation"><a href="#2-2-Test-Apache-Installation" class="headerlink" title="2.2 Test Apache Installation"></a>2.2 Test Apache Installation</h3><p>Enter <a href="http://your_ip_address/" target="_blank" rel="noopener">http://your_ip_address/</a> in your browser’s address bar, if you can<br>see a page reading ‘It works’ then we could proceed to next step. If not,<br>then the 80 port, which is for http, may be closed by default</p>
+<ul>
+<li>If your enabled firewalld then enter</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --list-all</span><br></pre></td></tr></table></figure>
+
+<p>The output may be like this</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public (active)</span><br><span class="line">  target: default</span><br><span class="line">  icmp-block-inversion: no</span><br><span class="line">  interfaces: wlan0</span><br><span class="line">  sources:</span><br><span class="line">  services: ssh dhcpv6-client http</span><br><span class="line">  ports: 22/tcp 2888/tcp</span><br><span class="line">  protocols:</span><br><span class="line">  masquerade: no</span><br><span class="line">  forward-ports:</span><br><span class="line">  source-ports:</span><br><span class="line">  icmp-blocks:</span><br><span class="line">  rich rules:</span><br></pre></td></tr></table></figure>
+
+<p>Enter this command and reload it</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --add-service=http --permanent</span><br><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --reload</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Or you may refer to port management page via your server vendor</li>
+</ul>
+<h2 id="3-MariaDB"><a href="#3-MariaDB" class="headerlink" title="3. MariaDB"></a>3. MariaDB</h2><h3 id="3-1-Create-MariaDB-repo-file"><a href="#3-1-Create-MariaDB-repo-file" class="headerlink" title="3.1 Create MariaDB repo file"></a>3.1 Create MariaDB repo file</h3><p>Enter command:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/yum.repos.d/MariaDB.repo</span><br></pre></td></tr></table></figure>
+
+<p>Then type or copy &amp; paste these text into it:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># MariaDB 10.4 CentOS repository list</span><br><span class="line">[mariadb]</span><br><span class="line">name = MariaDB</span><br><span class="line">baseurl = http://yum.mariadb.org/10.4/centos7-amd64</span><br><span class="line">gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB</span><br><span class="line">gpgcheck=1</span><br></pre></td></tr></table></figure>
+
+<p>You can always find newest contents <a href="https://downloads.mariadb.org/mariadb/repositories" target="_blank" rel="noopener">here</a></p>
+<p>Sometimes the downloading speed may be slow, you can change the <code>baseurl</code> to the mirror that corresponds to your current religion. Find mirror list <a href="https://mariadb.com/kb/en/library/mirror-sites-for-mariadb/" target="_blank" rel="noopener">here</a>.</p>
+<p>For example, let’s choose a Netherland mirror</p>
+<p><code>http://mirror.ehv.weppel.nl</code>.</p>
+<p>First, change the original <code>baseurl</code> to</p>
+<p><code>http://mirror.ehv.weppel.nl/mariadb/yum/10.4/centos7-amd64</code></p>
+<p>Then modify the <code>gpgkey</code> to</p>
+<p><code>http://mirror.ehv.weppel.nl/mariadb/yu,/RPM-GPG-KEY-MariaDB</code></p>
+<h3 id="3-2-Install-MariaDB-and-enable-its-service"><a href="#3-2-Install-MariaDB-and-enable-its-service" class="headerlink" title="3.2 Install MariaDB and enable its service"></a>3.2 Install MariaDB and enable its service</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install MariaDB-server MariaDB-client -y</span><br><span class="line">$ sudo systemctl <span class="built_in">start</span> mariadb.service</span><br><span class="line">$ sudo systemctl enable mariadb.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-Config-MariaDB"><a href="#3-3-Config-MariaDB" class="headerlink" title="3.3 Config MariaDB"></a>3.3 Config MariaDB</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<p>Follow the instructions appearing on the screen, set a root password<br>and forbid root remote login for security</p>
+<h3 id="3-4-Open-port-for-mysql"><a href="#3-4-Open-port-for-mysql" class="headerlink" title="3.4 Open port for mysql"></a>3.4 Open port for mysql</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --get-active-zones</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Which could print a single public zone or a few, like <em>public</em> and<br><em>dmz</em>. Run the command below for any zone shown on the screen, replacing<br><code>&lt;zone&gt;</code> and <code>&lt;mysql_port&gt;</code> with your system’s current setup:</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --zone=public --add-port=<span class="number">3306</span>/tcp --permanent</span><br><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-PHP-7-3"><a href="#4-PHP-7-3" class="headerlink" title="4. PHP 7.3"></a>4. PHP 7.3</h2><h3 id="4-1-Config-repo"><a href="#4-1-Config-repo" class="headerlink" title="4.1 Config repo"></a>4.1 Config repo</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum-config-manager --enable remi-php73</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-Install-php-and-php-extensions"><a href="#4-2-Install-php-and-php-extensions" class="headerlink" title="4.2 Install php and php extensions"></a>4.2 Install php and php extensions</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install php73-php</span><br></pre></td></tr></table></figure>
+
+<p>You can install some useful php extensions you need freely.</p>
+<p>And don’t forget the composer, the dependency manager</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install composer -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-Restart-Apache"><a href="#4-3-Restart-Apache" class="headerlink" title="4.3 Restart Apache"></a>4.3 Restart Apache</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart httpd.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-Test-php-installation"><a href="#4-4-Test-php-installation" class="headerlink" title="4.4 Test php installation"></a>4.4 Test php installation</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">echo</span> "&lt;?php phpinfo(); ?&gt;" &gt; /var/www/html/index.php</span><br></pre></td></tr></table></figure>
+
+<p>Enter <code>http://your_ip_address/index.php</code> in browser’s address bar, if<br>successful, you can see a long page listing php’s information</p>
+<h2 id="5-phpMyAdmin"><a href="#5-phpMyAdmin" class="headerlink" title="5. phpMyAdmin"></a>5. phpMyAdmin</h2><h3 id="5-1-Install"><a href="#5-1-Install" class="headerlink" title="5.1 Install"></a>5.1 Install</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install phpMyAdmin -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-Config-phpMyAdmin"><a href="#5-2-Config-phpMyAdmin" class="headerlink" title="5.2 Config phpMyAdmin"></a>5.2 Config phpMyAdmin</h3><p>Open config file</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/httpd/conf.d/phpMyAdmin.conf</span><br></pre></td></tr></table></figure>
+
+<p>Under those <code>&lt;RequireAny&gt;</code> tags, add <code>Require all granted</code> right above the<br><code>&lt;/RequireAny&gt;</code> tags. More practically and for security, identify your ip<br>then add <code>Require ip YOUR_IP_ADDRESS</code> instead of granting all.</p>
+<p>Better to install SSL support!</p>
+<p>Then install php extensions for phpMyAdmin:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install php73-php-mbstring php73-php-mysql -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-Restart-Apache-to-apply-changes"><a href="#5-3-Restart-Apache-to-apply-changes" class="headerlink" title="5.3 Restart Apache to apply changes"></a>5.3 Restart Apache to apply changes</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart httpd.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-Test-phpMyAdmin-installation"><a href="#5-4-Test-phpMyAdmin-installation" class="headerlink" title="5.4 Test phpMyAdmin installation"></a>5.4 Test phpMyAdmin installation</h3><p>Enter <code>http://your_ip_address/phpmyadmin/</code> in address bar, log in by<br>entering mariadb’s auth you set before</p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/09/05/git-alias/" title= "Git Alias Backup">
+                    <div class="nextTitle">Git Alias Backup</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/09/05/hello-world/" title= "Hello World">
+                    <div class="prevTitle">Hello World</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ikamitse@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/marogatari" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="//t.me/marogatari" class="iconfont-archer telegram" target="_blank" title=telegram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="//twitter.com/Moedrian" class="iconfont-archer twitter" target="_blank" title=twitter></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LAMP-Stack-Installation-on-CentOS-7-64-Bit"><span class="toc-number">1.</span> <span class="toc-text">LAMP Stack Installation on CentOS 7 64 Bit</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before-you-start…"><span class="toc-number">1.1.</span> <span class="toc-text">Before you start…</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Install-essential-repositories-and-editor"><span class="toc-number">1.2.</span> <span class="toc-text">1. Install essential repositories and editor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Update"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 Update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Install-EPEL-repository"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 Install EPEL repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Install-Remi’s-RPM-repository"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.2.Install Remi’s RPM repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Check-repo-list"><span class="toc-number">1.2.4.</span> <span class="toc-text">1.4 Check repo list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-Install-yum-utils-package-for-the-yum-config-manager-command"><span class="toc-number">1.2.5.</span> <span class="toc-text">1.5 Install yum-utils package (for the yum-config-manager command)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-Update-it-again"><span class="toc-number">1.2.6.</span> <span class="toc-text">1.5 Update it again</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-Install-Vim"><span class="toc-number">1.2.7.</span> <span class="toc-text">1.6 Install Vim</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Apache"><span class="toc-number">1.3.</span> <span class="toc-text">2. Apache</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Install-Apache-and-enable-httpd-service"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 Install Apache and enable httpd service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Test-Apache-Installation"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 Test Apache Installation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-MariaDB"><span class="toc-number">1.4.</span> <span class="toc-text">3. MariaDB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Create-MariaDB-repo-file"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 Create MariaDB repo file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Install-MariaDB-and-enable-its-service"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 Install MariaDB and enable its service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Config-MariaDB"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 Config MariaDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Open-port-for-mysql"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 Open port for mysql</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-PHP-7-3"><span class="toc-number">1.5.</span> <span class="toc-text">4. PHP 7.3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Config-repo"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 Config repo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Install-php-and-php-extensions"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 Install php and php extensions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Restart-Apache"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 Restart Apache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Test-php-installation"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.4 Test php installation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-phpMyAdmin"><span class="toc-number">1.6.</span> <span class="toc-text">5. phpMyAdmin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Install"><span class="toc-number">1.6.1.</span> <span class="toc-text">5.1 Install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Config-phpMyAdmin"><span class="toc-number">1.6.2.</span> <span class="toc-text">5.2 Config phpMyAdmin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-Restart-Apache-to-apply-changes"><span class="toc-number">1.6.3.</span> <span class="toc-text">5.3 Restart Apache to apply changes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-Test-phpMyAdmin-installation"><span class="toc-number">1.6.4.</span> <span class="toc-text">5.4 Test phpMyAdmin installation</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 5
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspi-centos/" >Remember Me, Let CentOS Run On the Raspberry Pi</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspberry-pi-raspbian/" >Open Up, Install Raspbian to Raspberry Pi</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/install-lamp-to-centos-7/" >Install LAMP Stack on CentOS 7</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/git-alias/" >Git Alias Backup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="LAMP"><span class="iconfont-archer">&#xe606;</span>LAMP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Server"><span class="iconfont-archer">&#xe606;</span>Server</span>
+    
+        <span class="sidebar-tag-name" data-tags="CentOS"><span class="iconfont-archer">&#xe606;</span>CentOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+    
+        <span class="sidebar-tag-name" data-tags="RaspberryPi"><span class="iconfont-archer">&#xe606;</span>RaspberryPi</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hardware"><span class="iconfont-archer">&#xe606;</span>Hardware</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Code"><span class="iconfont-archer">&#xe60a;</span>Code</span>
+    
+        <span class="sidebar-category-name" data-categories="Coding"><span class="iconfont-archer">&#xe60a;</span>Coding</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Moedrian"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

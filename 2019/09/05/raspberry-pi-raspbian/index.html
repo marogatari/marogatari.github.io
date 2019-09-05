@@ -22,7 +22,7 @@
     <meta name="description" content="Not That Available">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>The Who Am I · Moedrian&#39;s Bron-Yr-Aur</title>
+    <title>Open Up, Install Raspbian to Raspberry Pi · Moedrian&#39;s Bron-Yr-Aur</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,7 +203,7 @@
 </head>
 
     
-        <body class="about-body">
+        <body class="post-body">
     
     
 <header class="header">
@@ -211,6 +211,15 @@
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Moedrian&#39;s Bron-Yr-Aur</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Open Up, Install Raspbian to Raspberry Pi</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Moedrian's Bron-Yr-Aur</a>
 </header>
@@ -229,23 +238,71 @@ height:50vh;
     <!-- 主页  -->
     
     
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/about-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            The Who Am I
+            Open Up, Install Raspbian to Raspberry Pi
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "RaspberryPi">RaspberryPi</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hardware">Hardware</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">425</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/09/05</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -346,11 +403,89 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <!-- 不可以删除，否则会调用post的layout  -->
-<main class="main about-page">
+            <main class="main post-page">
     <article class="article-entry">
-        
+        <h1 id="Setting-up-Raspberry-Pi-with-Raspbian-Strech-Lite"><a href="#Setting-up-Raspberry-Pi-with-Raspbian-Strech-Lite" class="headerlink" title="Setting up Raspberry Pi with Raspbian Strech Lite"></a>Setting up Raspberry Pi with Raspbian Strech Lite</h1><h2 id="Before-You-Start"><a href="#Before-You-Start" class="headerlink" title="Before You Start"></a>Before You Start</h2><ul>
+<li>Hardwares</li>
+</ul>
+<ol>
+<li>Raspberry Pi with its power cable</li>
+<li>SD card 16G or 32G</li>
+<li>SD card reader</li>
+<li>PC</li>
+<li>WiFi or an Ethenet cable</li>
+</ol>
+<ul>
+<li>Softwares</li>
+</ul>
+<ol>
+<li><a href="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="noopener">Win32 Disk Imager</a> - to write the system into the SD card</li>
+<li><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="noopener">PuTTY</a> - to establish ssh connection</li>
+<li><a href="https://filezilla-project.org/download.php?type=client" target="_blank" rel="noopener">FileZilla</a> - to transfer files via ftp</li>
+</ol>
+<ul>
+<li>And you need to know</li>
+</ul>
+<ol>
+<li>Basic usage of vim</li>
+<li>Basic usage of Linux</li>
+</ol>
+<h2 id="1-Raspbian"><a href="#1-Raspbian" class="headerlink" title="1. Raspbian"></a>1. Raspbian</h2><p><a href="https://www.raspberrypi.org/documentation/raspbian/" target="_blank" rel="noopener">Raspbian</a> is an official operating system for all models of the Raspberry Pi. They also lists some other systems you can try with. Click <a href="./raspberrypi_centos_config.md">here</a> for a CentOS installation guide.</p>
+<h3 id="1-1-Download"><a href="#1-1-Download" class="headerlink" title="1.1 Download"></a>1.1 Download</h3><p>Here is the <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="noopener">website</a> for downloading.<br>If you have a monitor and an HDMI cable, just download the one with desktop, which is quite user-friendly. They get a Minecraft!</p>
+<h3 id="1-2-Installation"><a href="#1-2-Installation" class="headerlink" title="1.2 Installation"></a>1.2 Installation</h3><h4 id="1-2-1-Write-SD-card"><a href="#1-2-1-Write-SD-card" class="headerlink" title="1.2.1 Write SD card"></a>1.2.1 Write SD card</h4><p>You need <a href="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="noopener">Win32 Disk Imager</a> to do this. First, unzip the file you downloaded then open Image Writer, plug the SD card reader into PC, choose the file, finally click the write button.</p>
+<h4 id="1-2-2-Enable-ssh"><a href="#1-2-2-Enable-ssh" class="headerlink" title="1.2.2 Enable ssh"></a>1.2.2 Enable ssh</h4><p>For security reasons, Raspbian disables ssh by default. Just create a empty file named <figure class="highlight plain"><figcaption><span>and throw it into boot partition's root directory.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 1.2.3 WiFi</span><br><span class="line"></span><br><span class="line">Create another file and rename it ```wpa_suppliant.conf``` and add these contents below</span><br><span class="line"></span><br><span class="line">```conf</span><br><span class="line">country=CN         # your country abbr</span><br><span class="line"></span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line"></span><br><span class="line">update_config=1</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">  ssid=&quot;xxxxxx&quot;    # your WiFi SSID</span><br><span class="line">  psk=&quot;xxxxxxx&quot;    # password for WiFi</span><br><span class="line">  priority=x       # when you have more than one wireless network</span><br><span class="line">                   # use this option to mark its priority</span><br><span class="line">                   # or just ignore it</span><br><span class="line">  id_str=&quot;xxxxxx&quot;  # a nickname for this network connection</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Throw this file into boot as well.</p>
+<h2 id="2-Power-on"><a href="#2-Power-on" class="headerlink" title="2. Power on"></a>2. Power on</h2><h2 id="3-Configuration"><a href="#3-Configuration" class="headerlink" title="3. Configuration"></a>3. Configuration</h2><h3 id="3-1-Secure-shell-connection"><a href="#3-1-Secure-shell-connection" class="headerlink" title="3.1 Secure shell connection"></a>3.1 Secure shell connection</h3><p>Open router’s management page or connect it with an Ethernet cable via shared network then execute <figure class="highlight plain"><figcaption><span>-a``` in cmd, find the IP address corresponding to Pi's MAC, then open a cmd and enter:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```cmd</span><br><span class="line">ssh pi@192.168.xxx.xxx</span><br></pre></td></tr></table></figure></p>
+<p>Hit the <code>&lt;Enter&gt;</code>, you’ll be prompted to enter the password, which, by default, is <code>raspberry</code>.</p>
+<h3 id="3-2-Raspi-config"><a href="#3-2-Raspi-config" class="headerlink" title="3.2 Raspi-config"></a>3.2 Raspi-config</h3><p>Enter <code>sudo raspi-config</code> in the command window, and then use arrow keys and Enter to navigate and select.</p>
+<ul>
+<li>Change User Password</li>
+<li>(Optional) Choose Network Options then choose Hostname, set a new name for pi that doesn’t contains spaces and capital letters.</li>
+<li>Localisation Options<ul>
+<li>Change Timezone, select according to your location.</li>
+<li>Change WiFi Country</li>
+</ul>
+</li>
+<li>Finally select Advanced Options then Expand Filesystem</li>
+</ul>
+<p>After you finished all above, reboot it. Reconnect it, do whatever you want.</p>
+
     </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/09/05/raspi-centos/" title= "Remember Me, Let CentOS Run On the Raspberry Pi">
+                    <div class="nextTitle">Remember Me, Let CentOS Run On the Raspberry Pi</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/09/05/git-alias/" title= "Git Alias Backup">
+                    <div class="prevTitle">Git Alias Backup</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -436,6 +571,24 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Setting-up-Raspberry-Pi-with-Raspbian-Strech-Lite"><span class="toc-number">1.</span> <span class="toc-text">Setting up Raspberry Pi with Raspbian Strech Lite</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before-You-Start"><span class="toc-number">1.1.</span> <span class="toc-text">Before You Start</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Raspbian"><span class="toc-number">1.2.</span> <span class="toc-text">1. Raspbian</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Download"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 Download</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Installation"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 Installation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-Write-SD-card"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1.2.1 Write SD card</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-Enable-ssh"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">1.2.2 Enable ssh</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Power-on"><span class="toc-number">1.3.</span> <span class="toc-text">2. Power on</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Configuration"><span class="toc-number">1.4.</span> <span class="toc-text">3. Configuration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Secure-shell-connection"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 Secure shell connection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Raspi-config"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 Raspi-config</span></a></li></ol></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -629,6 +782,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
