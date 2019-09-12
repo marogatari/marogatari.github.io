@@ -22,7 +22,7 @@
     <meta name="description" content="Not That Available">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Moedrian&#39;s Bron-Yr-Aur</title>
+    <title>Single-Instance Primary Redis Cache Configuration · Moedrian&#39;s Bron-Yr-Aur</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Moedrian&#39;s Bron-Yr-Aur</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Single-Instance Primary Redis Cache Configuration</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Moedrian's Bron-Yr-Aur</a>
 </header>
@@ -220,24 +231,76 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            Single-Instance Primary Redis Cache Configuration
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "redis">redis</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "linux">linux</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">686</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/09/08</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,113 +401,130 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/06/init-vagrant/" >
-            
-                <span>Basic Vagrant Usage in Windows</span>
-        </a>
-        <div class="abstract-content">
-            The basic usage of Vagrant, a good choice of VM management tool.
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/06</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CentOS">CentOS</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Vagrant">Vagrant</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Redis-as-a-Cache-Database"><a href="#Redis-as-a-Cache-Database" class="headerlink" title="Redis as a Cache Database"></a>Redis as a Cache Database</h1><h2 id="Prerequisites-Before-We-Go-Ahead"><a href="#Prerequisites-Before-We-Go-Ahead" class="headerlink" title="Prerequisites Before We Go Ahead"></a>Prerequisites Before We Go Ahead</h2><ul>
+<li><code>git</code> to get history versions of redis from github</li>
+<li><code>wget</code> to download source code tarballs conveniently</li>
+<li><code>gcc</code> to compile source codes downloaded</li>
+<li><code>vim</code> or other editors you can invoke</li>
+</ul>
+<h2 id="Installation-from-Source-Code-and-Update"><a href="#Installation-from-Source-Code-and-Update" class="headerlink" title="Installation from Source Code and Update"></a>Installation from Source Code and Update</h2><p>The tutorial showed below uses <code>redis-5.0.4</code> and <code>redis-5.0.5</code>.</p>
+<p>First, get the source codes from its GitHub <a href="https://github.com/antirez/redis" target="_blank" rel="noopener">repo</a> and rename it to<br><code>redis-5.0.4</code> and <code>redis-5.0.5</code> separately:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> --branch 5.0.4 --depth 1 https://github.com/antirez/redis</span><br><span class="line">$ mv redis redis-5.0.4</span><br><span class="line">$ git <span class="built_in">clone</span> --branch 5.0.4 --depth 1 https://github.com/antirez/redis</span><br><span class="line">$ mv redis redis-5.0.5</span><br></pre></td></tr></table></figure>
+
+<p>Or you can get the newest release (<code>5.0.5</code> by 2019-9-10) by running:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://download.redis.io/redis-stable.tar.gz</span><br><span class="line">$ tar xzf redis-stable.tar.gz</span><br><span class="line">$ rm redis-stable.tar.gz</span><br><span class="line">$ mv redis-stable redis-5.0.5</span><br></pre></td></tr></table></figure>
+
+<p>Now mv the directories to <code>/usr/local/src</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mv redis* /usr/<span class="built_in">local</span>/src</span><br></pre></td></tr></table></figure>
+
+<p>Create a symbolic link pointed to <code>redis-5.0.4</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -sT redis-5.0.4 redis</span><br></pre></td></tr></table></figure>
+
+<p>Now you can <code>make</code> it:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> redis</span><br><span class="line">$ make</span><br><span class="line">$ make <span class="built_in">test</span>  <span class="comment"># This step is optional but recommended</span></span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>Now the executable binary files are placed to <code>/usr/local/bin/</code>, check<br>them by running:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l /usr/<span class="built_in">local</span>/bin | grep redis</span><br></pre></td></tr></table></figure>
+
+<p>Next, do some preparation works and edit the configuration file. Suppose<br>the current directory is <code>/usr/local/src/redis</code>. You can check it by typing <code>pwd</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir -p /etc/redis</span><br><span class="line">$ sudo cp redis.conf /etc/redis/</span><br><span class="line">$ sudo mkdir -p /var/log/redis</span><br><span class="line">$ sudo touch /var/log/redis/redis.log</span><br><span class="line">$ sudo chmod 755 /var/log/redis/redis.log</span><br></pre></td></tr></table></figure>
+
+<p>About the configuration file, find options listed below and change them<br>based on your need.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">options</th>
+<th align="left">parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>port</code></td>
+<td align="left"><code>6379</code></td>
+</tr>
+<tr>
+<td align="left"><code>daemonize</code></td>
+<td align="left"><code>yes</code></td>
+</tr>
+<tr>
+<td align="left"><code>supervised</code></td>
+<td align="left"><code>systemd</code></td>
+</tr>
+<tr>
+<td align="left"><code>logfile</code></td>
+<td align="left"><code>/var/log/redis/redis.log</code></td>
+</tr>
+<tr>
+<td align="left"><code>maxmemory</code></td>
+<td align="left"><code>256mb</code></td>
+</tr>
+<tr>
+<td align="left"><code>maxmemory-policy</code></td>
+<td align="left"><code>allkeys-lfu</code></td>
+</tr>
+</tbody></table>
+<p>About the <code>maxmemory-policy</code> option, check this <a href="https://redis.io/topics/lru-cache" target="_blank" rel="noopener">page</a> for further info.</p>
+<p>Next, time to use systemd to daemonize the redis service:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/systemd/system/redis.service</span><br></pre></td></tr></table></figure>
+
+<p>Add these lines below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Redis Storage boi</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line">ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf</span><br><span class="line">ExecStop=/usr/local/bin/redis-cli shutdown</span><br><span class="line">Restart=always</span><br><span class="line">Type=notify</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>Finally, <code>redis</code> is ready to go with <code>systemctl</code>!</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start redis.service</span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> redis.service</span><br><span class="line">$ sudo systemctl status redis.service</span><br></pre></td></tr></table></figure>
+
+<p>Check its installation with <code>redis-cli ping</code>, you are supposed to get a <code>PONG</code>.</p>
+<p>To update redis, modify the symbolic link created before:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">$ sudo ln -sfT redis-5.0.5 redis</span><br><span class="line">$ make</span><br><span class="line">$ make <span class="built_in">test</span></span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>Now check the version by invoke <code>redis-cli -v</code> or <code>redis-server -v</code>.</p>
+<h3 id="Bonus-Round-1-Pre-compiled-Installation-Fedora"><a href="#Bonus-Round-1-Pre-compiled-Installation-Fedora" class="headerlink" title="Bonus Round 1 - Pre-compiled Installation (Fedora)"></a>Bonus Round 1 - Pre-compiled Installation (Fedora)</h3><p>Under Fedora, simply run</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dnf install redis -y</span><br></pre></td></tr></table></figure>
+
+<p>to install redis. By 2019-9-10, the version is 5.0.5, same as the stable<br>release provided at <a href="https://redis.io" target="_blank" rel="noopener">Redis Official Site</a>.</p>
+<p>Next, edit the config file <code>/etc/redis.conf</code> then</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start redis.service</span><br><span class="line">$ sudo systemctl enable redis.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="Bonus-Round-2-Time-Serial-Data-Schema"><a href="#Bonus-Round-2-Time-Serial-Data-Schema" class="headerlink" title="Bonus Round 2 - Time-Serial Data Schema"></a>Bonus Round 2 - Time-Serial Data Schema</h3><p><a href="https://redis.io/topics/data-types-intro/#redis-sorted-sets" target="_blank" rel="noopener">Sorted sets</a> is a good solution to those time-serial data.</p>
+<p>The nomenclature of sorted set is usually set to <code>dev_id:parameter</code>,<br>and the data inside the sets are <code>parameter:timestamp =&gt; timestamp</code>.<br>to fetch the data from Redis, use <code>zrangebyscore</code> and no need to set<br><code>WITHSCORES</code> true.</p>
+<p>Sometimes you may want to add an alarm service, under these circumstances,<br>you need to create another type sorted sets, whose members are ranged<br>by their corresponding parameter value other than the timestamp i.e.<br><code>parameter:timestamp =&gt; parameter</code>. To distinguish from the set above,<br>you can add a prefix, like <code>ts:dev_id:param</code> and <code>alarm:dev_id:param</code>.</p>
+<p>You can check <a href="https://github.com/marogatari/Moech/blob/master/src/Data/Raspi/RaspiDataConvey.php" target="_blank" rel="noopener">this php file</a> for application.</p>
+<p><em>tl;dr:</em> For date records, set timestamp as value(score) and param value<br>as key(member); for alarm function, set timestamp as member and<br>param value as score.</p>
+
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/05/raspi-centos/" >
-            
-                <span>Remember Me, Let CentOS Run On the Raspberry Pi</span>
-        </a>
-        <div class="abstract-content">
-            Can you remember the ssh password of your forgotten Raspberry Pi? Why not try something new on it?
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/05</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CentOS">CentOS</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "RaspberryPi">RaspberryPi</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Hardware">Hardware</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/05/install-lamp-to-centos-7/" >
-            
-                <span>Install LAMP Stack on CentOS 7</span>
-        </a>
-        <div class="abstract-content">
-            This pages shows you how to manually deploy a LAMP stack on CentOS from scratch.
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/05</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LAMP">LAMP</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Server">Server</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CentOS">CentOS</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "PHP">PHP</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/09/06/compile-installation/" title= "Beginner's Compilation">
+                    <div class="prevTitle">Beginner's Compilation</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -530,6 +610,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-as-a-Cache-Database"><span class="toc-number">1.</span> <span class="toc-text">Redis as a Cache Database</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Prerequisites-Before-We-Go-Ahead"><span class="toc-number">1.1.</span> <span class="toc-text">Prerequisites Before We Go Ahead</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation-from-Source-Code-and-Update"><span class="toc-number">1.2.</span> <span class="toc-text">Installation from Source Code and Update</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bonus-Round-1-Pre-compiled-Installation-Fedora"><span class="toc-number">1.2.1.</span> <span class="toc-text">Bonus Round 1 - Pre-compiled Installation (Fedora)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bonus-Round-2-Time-Serial-Data-Schema"><span class="toc-number">1.2.2.</span> <span class="toc-text">Bonus Round 2 - Time-Serial Data Schema</span></a></li></ol></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -831,6 +929,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
