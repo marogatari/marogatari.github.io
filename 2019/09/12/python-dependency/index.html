@@ -22,7 +22,7 @@
     <meta name="description" content="Not That Available">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Linux Directories Description · Moedrian&#39;s Bron-Yr-Aur</title>
+    <title>Python Dependency Management · Moedrian&#39;s Bron-Yr-Aur</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Moedrian&#39;s Bron-Yr-Aur</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Linux Directories Description</a>
+                <a href="#" class="post-name">Python Dependency Management</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Linux Directories Description
+            Python Dependency Management
             <!-- 404 -->
             
         </h1>
@@ -266,20 +266,20 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags = "FAQ">FAQ</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "python">python</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">782</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                        <span>Word count: <span class="post-count word-count">0</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/09/06</span>
+                    <span class="post-intro-time">2019/09/12</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -403,42 +403,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="Linux-Directories"><a href="#Linux-Directories" class="headerlink" title="Linux Directories"></a>Linux Directories</h1><p><strong>Most of the following content is extracted from <a href="http://linuxcommand.org/tlcl.php" target="_blank" rel="noopener">TLCL</a></strong></p>
-<p><img src="https://cdn.shopify.com/s/files/1/0344/6469/files/tumblr_oa1tspt5yH1uuyy36o1_500_large.gif?18126303191109649813" alt="random weird cat image"></p>
-<h2 id><a href="#" class="headerlink" title="/"></a>/</h2><p>This is the root directory.  This is where the whole tree starts.</p>
-<h3 id="bin"><a href="#bin" class="headerlink" title="/bin"></a>/bin</h3><p>This directory contains executable programs which are needed in single user mode and to bring the system up or repair it.</p>
-<h3 id="boot"><a href="#boot" class="headerlink" title="/boot"></a>/boot</h3><p>Contains the Linux kernel, initial RAM disk image (for drivers needed at boot time), and the boot loader.</p>
-<h3 id="dev"><a href="#dev" class="headerlink" title="/dev"></a>/dev</h3><p>This is a special directory that contains <em>device nodes</em>. “Everything is a file” alson applies for devices. Here is where the kernel maintains a list of all the devices it understands.</p>
-<h3 id="etc"><a href="#etc" class="headerlink" title="/etc"></a>/etc</h3><p>The <strong><code>/etc</code></strong> directory contains all of the system-wide configuration files. It also contains a collection of shell scripts that start each of the system services at boot time. Everything in this directory should be readable text.</p>
-<h3 id="home"><a href="#home" class="headerlink" title="/home"></a>/home</h3><p>In normal configurations, each user is given a directory in <strong><code>/home</code></strong>. Ordinary users can only write files in their home directories. This limitation protects the system from errant user activity.</p>
-<h3 id="lib"><a href="#lib" class="headerlink" title="/lib"></a>/lib</h3><p>Contains shared library files used by the core system programs. These are similar to dynamic link libraries (DLLs) in Windows.</p>
-<h3 id="lost-found"><a href="#lost-found" class="headerlink" title="/lost+found"></a>/lost+found</h3><p>Each formatted partition or device using a Linux file system, such as ext4, will have this directory. It is used in the case of a partial recovery from a file system corruption event. Unless something really bad has happened to our system, this directory will remain empty.</p>
-<h3 id="media"><a href="#media" class="headerlink" title="/media"></a>/media</h3><p>On modern Linux systems the <strong><code>/media</code></strong> directory will contain the mount points for removable media such as USB drives, CD-ROMs, etc. that are mounted automatically at insertation.</p>
-<h3 id="mnt"><a href="#mnt" class="headerlink" title="/mnt"></a>/mnt</h3><p>On older Linux systems, the <strong><code>/mnt</code></strong> directory contains mount points for removable devices that have been mounted manually.</p>
-<h3 id="opt"><a href="#opt" class="headerlink" title="/opt"></a>/opt</h3><p>The <strong><code>/opt</code></strong> directory is used to install “optional” software. This is mainly used to hold commercial software products that might be installed on the system.</p>
-<h3 id="proc"><a href="#proc" class="headerlink" title="/proc"></a>/proc</h3><p>The <strong><code>/proc</code></strong> directory is special. It’s not a real file system in the sense of files stored on the hard drive. Rather, it is a virtual file system maintained by the Linux kernel. The “files” it contains are peepholes into the kernel itself. The files are readable and will give us a picture of how the kernels see the computer.</p>
-<h3 id="root"><a href="#root" class="headerlink" title="/root"></a>/root</h3><p>This is the home directory for the root account.</p>
-<h3 id="run"><a href="#run" class="headerlink" title="[/run]"></a>[/run]</h3><p>According to this <a href="https://lists.archlinux.org/pipermail/arch-projects/2011-March/000517.html" target="_blank" rel="noopener">page</a>:</p>
-<blockquote>
-<p>The <strong><code>/run</code></strong> mountpoint is supposed to be a tmpfs mounted during early boot, available and writable to for all tools at any time during bootup, it replaces <strong><code>/var/run/</code></strong>, which should become a symlink some day.</p>
-</blockquote>
-<h3 id="sbin"><a href="#sbin" class="headerlink" title="/sbin"></a>/sbin</h3><p>This directory contains “system binaries”. These are programs that perform vital system tasks that are generally reserved for the superuser.</p>
-<h3 id="srv"><a href="#srv" class="headerlink" title="/srv"></a>/srv</h3><p>According to <a href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard" target="_blank" rel="noopener">Wikipedia</a>:</p>
-<blockquote>
-<p>Site-specific data served by this system, such as data and scripts for web servers, data offered by FTP servers, and repositories for version control systems (appeared in FHS-2.3 in 2004).</p>
-</blockquote>
-<h3 id="sys"><a href="#sys" class="headerlink" title="/sys"></a>/sys</h3><p>Contains information about devices, drivers, and some kernel features.</p>
-<h3 id="tmp"><a href="#tmp" class="headerlink" title="/tmp"></a>/tmp</h3><p>The <strong><code>/tmp</code></strong> directory is intended for the storage of temporary, transient files created by various programs. Some configurations cause this directory to be emptied each time the system is booted.</p>
-<h3 id="usr"><a href="#usr" class="headerlink" title="/usr"></a>/usr</h3><p>The <strong><code>/usr</code></strong> directory tree is likely the largest one on a Linux system. It contains all the programs and support files used by regular users.</p>
-<h4 id="usr-bin"><a href="#usr-bin" class="headerlink" title="/usr/bin"></a>/usr/bin</h4><p><strong><code>/usr/bin</code></strong> contains the executable programs installed by the Linux distribution. It is not uncommon for this directory to hold thousands of programs.</p>
-<h4 id="usr-sbin"><a href="#usr-sbin" class="headerlink" title="/usr/sbin"></a>/usr/sbin</h4><p>Contains more system administration programs.</p>
-<h4 id="usr-lib"><a href="#usr-lib" class="headerlink" title="/usr/lib"></a>/usr/lib</h4><p>The shared libraries for the programs in <strong><code>/usr/bin</code></strong>.</p>
-<h4 id="usr-local"><a href="#usr-local" class="headerlink" title="/usr/local"></a>/usr/local</h4><p>The <strong><code>/usr/local</code></strong> tree is where programs that are not included with the distribution but are intended for system-wide use are installed. Programs compiled from source code are normally installed in <strong><code>/usr/local/bin</code></strong>. On a newly installed Linux system, this tree exists, but it will be empty until the system administrator puts something in it.</p>
-<h4 id="usr-share"><a href="#usr-share" class="headerlink" title="/usr/share"></a>/usr/share</h4><p><strong><code>/usr/share</code></strong> contains all the shared data used by programs in <strong><code>/usr/bin</code></strong>. This includes things such as default configuration files, icons, screen backgrounds, sound files, etc.</p>
-<h4 id="usr-share-doc"><a href="#usr-share-doc" class="headerlink" title="/usr/share/doc"></a>/usr/share/doc</h4><p>Most packages installed on the system will include some kind of documentation. In <strong><code>/usr/share/doc</code></strong>, we will find documentation files organized by package.</p>
-<h3 id="var"><a href="#var" class="headerlink" title="/var"></a>/var</h3><p>With the exception of <strong><code>/tmp</code></strong> and <strong><code>/home</code></strong>, the directories we have looked at so far remain relatively static, that is, their contents don’t change. The <strong><code>/var</code></strong> directory tree is where data that is likely to change is stored. Various databases, spool files, user mail, etc. are located here.</p>
-<h4 id="var-log"><a href="#var-log" class="headerlink" title="/var/log"></a>/var/log</h4><p><strong><code>/var/log</code></strong> contains log files, records of various system activity. These are important and should be monitored from time to time. The most useful ones are <strong><code>/var/log/messages</code></strong> and <strong><code>/var/log/syslog</code></strong>. Note that for security reasons on some systems only the superuser may view log files.</p>
-
+        
     </article>
     <!-- license  -->
     
@@ -446,17 +411,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/09/06/osi-model/" title= "Open Systems Interconnection(OSI) Model Explained!">
-                    <div class="nextTitle">Open Systems Interconnection(OSI) Model Explained!</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/09/06/init-vagrant/" title= "Basic Vagrant Usage in Windows">
-                    <div class="prevTitle">Basic Vagrant Usage in Windows</div>
+                <a href= "/2019/09/08/redis-config/" title= "Single-Instance Primary Redis Cache Configuration">
+                    <div class="prevTitle">Single-Instance Primary Redis Cache Configuration</div>
                 </a>
             
         </li>
@@ -576,7 +536,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Directories"><span class="toc-number">1.</span> <span class="toc-text">Linux Directories</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">1.1.</span> <span class="toc-text">/</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bin"><span class="toc-number">1.1.1.</span> <span class="toc-text">/bin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#boot"><span class="toc-number">1.1.2.</span> <span class="toc-text">/boot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dev"><span class="toc-number">1.1.3.</span> <span class="toc-text">/dev</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etc"><span class="toc-number">1.1.4.</span> <span class="toc-text">/etc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#home"><span class="toc-number">1.1.5.</span> <span class="toc-text">/home</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lib"><span class="toc-number">1.1.6.</span> <span class="toc-text">/lib</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lost-found"><span class="toc-number">1.1.7.</span> <span class="toc-text">/lost+found</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#media"><span class="toc-number">1.1.8.</span> <span class="toc-text">/media</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mnt"><span class="toc-number">1.1.9.</span> <span class="toc-text">/mnt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#opt"><span class="toc-number">1.1.10.</span> <span class="toc-text">/opt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proc"><span class="toc-number">1.1.11.</span> <span class="toc-text">/proc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root"><span class="toc-number">1.1.12.</span> <span class="toc-text">/root</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#run"><span class="toc-number">1.1.13.</span> <span class="toc-text">[/run]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sbin"><span class="toc-number">1.1.14.</span> <span class="toc-text">/sbin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#srv"><span class="toc-number">1.1.15.</span> <span class="toc-text">/srv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sys"><span class="toc-number">1.1.16.</span> <span class="toc-text">/sys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmp"><span class="toc-number">1.1.17.</span> <span class="toc-text">/tmp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#usr"><span class="toc-number">1.1.18.</span> <span class="toc-text">/usr</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-bin"><span class="toc-number">1.1.18.1.</span> <span class="toc-text">/usr/bin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-sbin"><span class="toc-number">1.1.18.2.</span> <span class="toc-text">/usr/sbin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-lib"><span class="toc-number">1.1.18.3.</span> <span class="toc-text">/usr/lib</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-local"><span class="toc-number">1.1.18.4.</span> <span class="toc-text">/usr/local</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-share"><span class="toc-number">1.1.18.5.</span> <span class="toc-text">/usr/share</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-share-doc"><span class="toc-number">1.1.18.6.</span> <span class="toc-text">/usr/share/doc</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#var"><span class="toc-number">1.1.19.</span> <span class="toc-text">/var</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#var-log"><span class="toc-number">1.1.19.1.</span> <span class="toc-text">/var/log</span></a></li></ol></li></ol></li></ol></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
