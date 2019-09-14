@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">0</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">391</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,7 +403,42 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        
+        <h1 id="Hey-Virtual-Environment-Python-3"><a href="#Hey-Virtual-Environment-Python-3" class="headerlink" title="Hey Virtual Environment (Python 3)"></a>Hey Virtual Environment (Python 3)</h1><h2 id="Normal-Linux-Boi"><a href="#Normal-Linux-Boi" class="headerlink" title="Normal Linux Boi"></a>Normal Linux Boi</h2><p>To create a virtual environment, simply run the commands below, but<br>please make sure the current user have access to the <code>path/to/directory</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 -m venv path/to/directory venv_name</span></span><br></pre></td></tr></table></figure>
+
+<p>for instance, </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mkdir -p /home/codes/projects</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo chown -R <span class="variable">$USER</span>:<span class="variable">$USER</span> /home/codes</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mkdir /home/codes/projects/flask-iai</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> python3 -m venv /home/codes/projects/flask-iai iai</span></span><br></pre></td></tr></table></figure>
+
+<p>In this example a new virtual environment named <code>iai</code> is created in<br>the directory <code>/home/codes/projects/flask-iai</code>.</p>
+<p>To activate the virtual environment,</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /home/codes/projects/flask-iai</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> iai/bin/iai</span></span><br></pre></td></tr></table></figure>
+
+<p>now there should be a prefix <code>(iai)</code> appears at the start of line like</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(iai)[vagrant@pencil flask-iai]$ python --version</span><br><span class="line">3.7.4</span><br></pre></td></tr></table></figure>
+
+<p>If you want to use another version of python, for example, a pre-release one:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir /home/codes/projects/django-ucat</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /home/codes/projects/django-ucat</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> /opt/python3b/bin/python -m venv . ucat <span class="comment"># simple af</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ucat/bin/activate</span></span><br><span class="line"><span class="meta">(ucat)$</span><span class="bash"> python --version</span></span><br><span class="line">3.8.0b3</span><br></pre></td></tr></table></figure>
+
+<p>Hey, here is a trap thing, when using <code>pip</code> in the virtual environment,<br>you should run</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(ucat)$</span><span class="bash"> python -m pip install package_names</span></span><br></pre></td></tr></table></figure>
+
+<p>or</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(ucat)$</span><span class="bash"> ucat/bin/pip install package_names</span></span><br></pre></td></tr></table></figure>
+
+<p>instead of invoking <code>pip</code> directly because it is the <code>pip</code> system-widely<br>rather than the <code>venv</code> one. </p>
+<p>To save the requirements, run</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(ucat)$</span><span class="bash"> python -m pip freeze &gt; requirements.txt</span></span><br></pre></td></tr></table></figure>
+
+<p>to get a list in the <code>requirements.txt</code>. When you get to a new instance,<br>move the txt file to the directory, then run</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(ucat)$</span><span class="bash"> python -m pip install -r requirements.txt</span></span><br></pre></td></tr></table></figure>
+
+<p>to install the dependencies e.g.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(ucat)$</span><span class="bash"> python -m pip install flask</span></span><br><span class="line"><span class="meta">(ucat)$</span><span class="bash"> python -m pip freeze &gt; requirements.txt</span></span><br><span class="line"><span class="meta">(ucat)$</span><span class="bash"> cat requirements.txt</span></span><br><span class="line">Click==7.0</span><br><span class="line">Flask==1.1.1</span><br><span class="line">itsdangerous==1.1.0</span><br><span class="line">Jinja2==2.10.1</span><br><span class="line">MarkupSafe==1.1.1</span><br><span class="line">Werkzeug==0.15.6</span><br></pre></td></tr></table></figure>
+
+<p>To leave the virtual environment, just type <code>deactivate</code>.</p>
+<h2 id="Vagrant-Boi-Notice"><a href="#Vagrant-Boi-Notice" class="headerlink" title="Vagrant Boi Notice"></a>Vagrant Boi Notice</h2><p>If you are working on Vagrant shared folder, you may encounter a<br>protocol error when trying to run the command above. To resolve this<br>error, use <code>rm -r path/to/venv_name</code> to delete the environment you<br>created before, exit ssh and <code>vagrant halt</code>.</p>
+<p>Then launch a cmd or other alike tools granted with admin privilege,<br>locate to the vagrant instance folder and <code>vagrant up</code>, re-run that<br>venv-creating command above. Now everything shall works fine.</p>
+
     </article>
     <!-- license  -->
     
@@ -536,7 +571,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hey-Virtual-Environment-Python-3"><span class="toc-number">1.</span> <span class="toc-text">Hey Virtual Environment (Python 3)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-Linux-Boi"><span class="toc-number">1.1.</span> <span class="toc-text">Normal Linux Boi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vagrant-Boi-Notice"><span class="toc-number">1.2.</span> <span class="toc-text">Vagrant Boi Notice</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -549,6 +584,16 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -705,12 +750,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/osi-model/" >Open Systems Interconnection(OSI) Model Explained!</a>
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/linux-dir/" >Linux Directories Description</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/linux-dir/" >Linux Directories Description</a>
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/osi-model/" >Open Systems Interconnection(OSI) Model Explained!</a>
         </li>
     
     
@@ -725,7 +770,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/install-lamp-to-centos-7/" >Install LAMP Stack on CentOS 7</a>
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspberry-pi-raspbian/" >Open Up, Install Raspbian to Raspberry Pi</a>
         </li>
     
     
@@ -735,7 +780,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspberry-pi-raspbian/" >Open Up, Install Raspbian to Raspberry Pi</a>
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/install-lamp-to-centos-7/" >Install LAMP Stack on CentOS 7</a>
         </li>
     
     
@@ -752,25 +797,25 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="FAQ"><span class="iconfont-archer">&#xe606;</span>FAQ</span>
     
+        <span class="sidebar-tag-name" data-tags="LAMP"><span class="iconfont-archer">&#xe606;</span>LAMP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Server"><span class="iconfont-archer">&#xe606;</span>Server</span>
+    
         <span class="sidebar-tag-name" data-tags="CentOS"><span class="iconfont-archer">&#xe606;</span>CentOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+    
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="Vagrant"><span class="iconfont-archer">&#xe606;</span>Vagrant</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
-        <span class="sidebar-tag-name" data-tags="LAMP"><span class="iconfont-archer">&#xe606;</span>LAMP</span>
-    
-        <span class="sidebar-tag-name" data-tags="Server"><span class="iconfont-archer">&#xe606;</span>Server</span>
-    
-        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+        <span class="sidebar-tag-name" data-tags="ComputerNetwork"><span class="iconfont-archer">&#xe606;</span>ComputerNetwork</span>
     
         <span class="sidebar-tag-name" data-tags="RaspberryPi"><span class="iconfont-archer">&#xe606;</span>RaspberryPi</span>
     
         <span class="sidebar-tag-name" data-tags="Hardware"><span class="iconfont-archer">&#xe606;</span>Hardware</span>
-    
-        <span class="sidebar-tag-name" data-tags="ComputerNetwork"><span class="iconfont-archer">&#xe606;</span>ComputerNetwork</span>
-    
-        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
     

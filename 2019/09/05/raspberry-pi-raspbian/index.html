@@ -435,7 +435,7 @@ height:50vh;
 <h3 id="1-2-Installation"><a href="#1-2-Installation" class="headerlink" title="1.2 Installation"></a>1.2 Installation</h3><h4 id="1-2-1-Write-SD-card"><a href="#1-2-1-Write-SD-card" class="headerlink" title="1.2.1 Write SD card"></a>1.2.1 Write SD card</h4><p>You need <a href="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="noopener">Win32 Disk Imager</a> to do this. First, unzip the file you downloaded then open Image Writer, plug the SD card reader into PC, choose the file, finally click the write button.</p>
 <h4 id="1-2-2-Enable-ssh"><a href="#1-2-2-Enable-ssh" class="headerlink" title="1.2.2 Enable ssh"></a>1.2.2 Enable ssh</h4><p>For security reasons, Raspbian disables ssh by default. Just create a empty file named <figure class="highlight plain"><figcaption><span>and throw it into boot partition's root directory.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 1.2.3 WiFi</span><br><span class="line"></span><br><span class="line">Create another file and rename it ```wpa_suppliant.conf``` and add these contents below</span><br><span class="line"></span><br><span class="line">```conf</span><br><span class="line">country=CN         # your country abbr</span><br><span class="line"></span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line"></span><br><span class="line">update_config=1</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">  ssid=&quot;xxxxxx&quot;    # your WiFi SSID</span><br><span class="line">  psk=&quot;xxxxxxx&quot;    # password for WiFi</span><br><span class="line">  priority=x       # when you have more than one wireless network</span><br><span class="line">                   # use this option to mark its priority</span><br><span class="line">                   # or just ignore it</span><br><span class="line">  id_str=&quot;xxxxxx&quot;  # a nickname for this network connection</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Throw this file into boot as well.</p>
-<h2 id="2-Power-on"><a href="#2-Power-on" class="headerlink" title="2. Power on"></a>2. Power on</h2><h2 id="3-Configuration"><a href="#3-Configuration" class="headerlink" title="3. Configuration"></a>3. Configuration</h2><h3 id="3-1-Secure-shell-connection"><a href="#3-1-Secure-shell-connection" class="headerlink" title="3.1 Secure shell connection"></a>3.1 Secure shell connection</h3><p>Open router’s management page or connect it with an Ethernet cable via shared network then execute <figure class="highlight plain"><figcaption><span>-a``` in cmd, find the IP address corresponding to Pi's MAC, then open a cmd and enter:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```cmd</span><br><span class="line">ssh pi@192.168.xxx.xxx</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-Power-on"><a href="#2-Power-on" class="headerlink" title="2. Power on"></a>2. Power on</h2><h2 id="3-Configuration"><a href="#3-Configuration" class="headerlink" title="3. Configuration"></a>3. Configuration</h2><h3 id="3-1-Secure-shell-connection"><a href="#3-1-Secure-shell-connection" class="headerlink" title="3.1 Secure shell connection"></a>3.1 Secure shell connection</h3><p>Open router’s management page or connect it with an Ethernet cable via shared network then execute <figure class="highlight plain"><figcaption><span>-a``` in shell, find the IP address corresponding to Pi's MAC, then open a shell and enter:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```shell</span><br><span class="line">ssh pi@192.168.xxx.xxx</span><br></pre></td></tr></table></figure></p>
 <p>Hit the <code>&lt;Enter&gt;</code>, you’ll be prompted to enter the password, which, by default, is <code>raspberry</code>.</p>
 <h3 id="3-2-Raspi-config"><a href="#3-2-Raspi-config" class="headerlink" title="3.2 Raspi-config"></a>3.2 Raspi-config</h3><p>Enter <code>sudo raspi-config</code> in the command window, and then use arrow keys and Enter to navigate and select.</p>
 <ul>
@@ -723,6 +723,16 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 11
@@ -756,12 +766,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/osi-model/" >Open Systems Interconnection(OSI) Model Explained!</a>
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/linux-dir/" >Linux Directories Description</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/linux-dir/" >Linux Directories Description</a>
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/osi-model/" >Open Systems Interconnection(OSI) Model Explained!</a>
         </li>
     
     
@@ -776,7 +786,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/install-lamp-to-centos-7/" >Install LAMP Stack on CentOS 7</a>
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspberry-pi-raspbian/" >Open Up, Install Raspbian to Raspberry Pi</a>
         </li>
     
     
@@ -786,7 +796,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspberry-pi-raspbian/" >Open Up, Install Raspbian to Raspberry Pi</a>
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/install-lamp-to-centos-7/" >Install LAMP Stack on CentOS 7</a>
         </li>
     
     
@@ -803,25 +813,25 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="FAQ"><span class="iconfont-archer">&#xe606;</span>FAQ</span>
     
+        <span class="sidebar-tag-name" data-tags="LAMP"><span class="iconfont-archer">&#xe606;</span>LAMP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Server"><span class="iconfont-archer">&#xe606;</span>Server</span>
+    
         <span class="sidebar-tag-name" data-tags="CentOS"><span class="iconfont-archer">&#xe606;</span>CentOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+    
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="Vagrant"><span class="iconfont-archer">&#xe606;</span>Vagrant</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
-        <span class="sidebar-tag-name" data-tags="LAMP"><span class="iconfont-archer">&#xe606;</span>LAMP</span>
-    
-        <span class="sidebar-tag-name" data-tags="Server"><span class="iconfont-archer">&#xe606;</span>Server</span>
-    
-        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+        <span class="sidebar-tag-name" data-tags="ComputerNetwork"><span class="iconfont-archer">&#xe606;</span>ComputerNetwork</span>
     
         <span class="sidebar-tag-name" data-tags="RaspberryPi"><span class="iconfont-archer">&#xe606;</span>RaspberryPi</span>
     
         <span class="sidebar-tag-name" data-tags="Hardware"><span class="iconfont-archer">&#xe606;</span>Hardware</span>
-    
-        <span class="sidebar-tag-name" data-tags="ComputerNetwork"><span class="iconfont-archer">&#xe606;</span>ComputerNetwork</span>
-    
-        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
     

@@ -266,11 +266,11 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CentOS">CentOS</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags = "LAMP">LAMP</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Server">Server</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CentOS">CentOS</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "PHP">PHP</a>
     
@@ -410,45 +410,45 @@ height:50vh;
         <h1 id="LAMP-Stack-Installation-on-CentOS-7-64-Bit"><a href="#LAMP-Stack-Installation-on-CentOS-7-64-Bit" class="headerlink" title="LAMP Stack Installation on CentOS 7 64 Bit"></a>LAMP Stack Installation on CentOS 7 64 Bit</h1><h2 id="Before-you-start…"><a href="#Before-you-start…" class="headerlink" title="Before you start…"></a>Before you start…</h2><ul>
 <li>Basic usage of vim, if none, use nano instead</li>
 </ul>
-<h2 id="1-Install-essential-repositories-and-editor"><a href="#1-Install-essential-repositories-and-editor" class="headerlink" title="1. Install essential repositories and editor"></a>1. Install essential repositories and editor</h2><h3 id="1-1-Update"><a href="#1-1-Update" class="headerlink" title="1.1 Update"></a>1.1 Update</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum update</span><br></pre></td></tr></table></figure>
+<h2 id="1-Install-essential-repositories-and-editor"><a href="#1-Install-essential-repositories-and-editor" class="headerlink" title="1. Install essential repositories and editor"></a>1. Install essential repositories and editor</h2><h3 id="1-1-Update"><a href="#1-1-Update" class="headerlink" title="1.1 Update"></a>1.1 Update</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum update</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="1-2-Install-EPEL-repository"><a href="#1-2-Install-EPEL-repository" class="headerlink" title="1.2 Install EPEL repository"></a>1.2 Install EPEL repository</h3><blockquote>
 <p>Extra Packages for Enterprise Linux (or EPEL) is a Fedora Special<br>Interest Group that creates, maintains, and manages a high quality<br>set of additional packages for Enterprise Linux, including, but not<br>limited to, Red Hat Enterprise Linux (RHEL), CentOS and Scientific<br>Linux (SL), Oracle Linux (OL).</p>
 </blockquote>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-<span class="number">7</span>.noarch.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="1-2-Install-Remi’s-RPM-repository"><a href="#1-2-Install-Remi’s-RPM-repository" class="headerlink" title="1.2.Install Remi’s RPM repository"></a>1.2.Install Remi’s RPM repository</h3><blockquote>
 <p>Remi is a repository providing the latest versions of the PHP stack,<br>full featured, and some other software, to the Fedora and Enterprise<br>Linux (RHEL, CentOS, Oracle, Scientific Linux, …) users.</p>
 </blockquote>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install http://rpms.remirepo.<span class="built_in">net</span>/enterprise/remi-release-<span class="number">7</span>.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="1-4-Check-repo-list"><a href="#1-4-Check-repo-list" class="headerlink" title="1.4 Check repo list"></a>1.4 Check repo list</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum repolist</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-Check-repo-list"><a href="#1-4-Check-repo-list" class="headerlink" title="1.4 Check repo list"></a>1.4 Check repo list</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum repolist</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="1-5-Install-yum-utils-package-for-the-yum-config-manager-command"><a href="#1-5-Install-yum-utils-package-for-the-yum-config-manager-command" class="headerlink" title="1.5 Install yum-utils package (for the yum-config-manager command)"></a>1.5 Install yum-utils package (for the yum-config-manager command)</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install yum-utils -y</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-Install-yum-utils-package-for-the-yum-config-manager-command"><a href="#1-5-Install-yum-utils-package-for-the-yum-config-manager-command" class="headerlink" title="1.5 Install yum-utils package (for the yum-config-manager command)"></a>1.5 Install yum-utils package (for the yum-config-manager command)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install yum-utils -y</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="1-5-Update-it-again"><a href="#1-5-Update-it-again" class="headerlink" title="1.5 Update it again"></a>1.5 Update it again</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum update</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-Update-it-again"><a href="#1-5-Update-it-again" class="headerlink" title="1.5 Update it again"></a>1.5 Update it again</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum update</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="1-6-Install-Vim"><a href="#1-6-Install-Vim" class="headerlink" title="1.6 Install Vim"></a>1.6 Install Vim</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install vim -y</span><br></pre></td></tr></table></figure>
+<h3 id="1-6-Install-Vim"><a href="#1-6-Install-Vim" class="headerlink" title="1.6 Install Vim"></a>1.6 Install Vim</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install vim -y</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="2-Apache"><a href="#2-Apache" class="headerlink" title="2. Apache"></a>2. Apache</h2><h3 id="2-1-Install-Apache-and-enable-httpd-service"><a href="#2-1-Install-Apache-and-enable-httpd-service" class="headerlink" title="2.1 Install Apache and enable httpd service"></a>2.1 Install Apache and enable httpd service</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install httpd -y</span><br><span class="line">$ sudo systemctl <span class="built_in">start</span> httpd.service</span><br><span class="line">$ sudo systemctl enable httpd.service</span><br></pre></td></tr></table></figure>
+<h2 id="2-Apache"><a href="#2-Apache" class="headerlink" title="2. Apache"></a>2. Apache</h2><h3 id="2-1-Install-Apache-and-enable-httpd-service"><a href="#2-1-Install-Apache-and-enable-httpd-service" class="headerlink" title="2.1 Install Apache and enable httpd service"></a>2.1 Install Apache and enable httpd service</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install httpd -y</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start httpd.service</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl <span class="built_in">enable</span> httpd.service</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="2-2-Test-Apache-Installation"><a href="#2-2-Test-Apache-Installation" class="headerlink" title="2.2 Test Apache Installation"></a>2.2 Test Apache Installation</h3><p>Enter <a href="http://your_ip_address/" target="_blank" rel="noopener">http://your_ip_address/</a> in your browser’s address bar, if you can<br>see a page reading ‘It works’ then we could proceed to next step. If not,<br>then the 80 port, which is for http, may be closed by default</p>
 <ul>
 <li>If your enabled firewalld then enter</li>
 </ul>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --list-all</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo firewall-shell --list-all</span></span><br></pre></td></tr></table></figure>
 
 <p>The output may be like this</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public (active)</span><br><span class="line">  target: default</span><br><span class="line">  icmp-block-inversion: no</span><br><span class="line">  interfaces: wlan0</span><br><span class="line">  sources:</span><br><span class="line">  services: ssh dhcpv6-client http</span><br><span class="line">  ports: 22/tcp 2888/tcp</span><br><span class="line">  protocols:</span><br><span class="line">  masquerade: no</span><br><span class="line">  forward-ports:</span><br><span class="line">  source-ports:</span><br><span class="line">  icmp-blocks:</span><br><span class="line">  rich rules:</span><br></pre></td></tr></table></figure>
 
 <p>Enter this command and reload it</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --add-service=http --permanent</span><br><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo firewall-shell --add-service=http --permanent</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo firewall-shell --reload</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Or you may refer to port management page via your server vendor</li>
 </ul>
 <h2 id="3-MariaDB"><a href="#3-MariaDB" class="headerlink" title="3. MariaDB"></a>3. MariaDB</h2><h3 id="3-1-Create-MariaDB-repo-file"><a href="#3-1-Create-MariaDB-repo-file" class="headerlink" title="3.1 Create MariaDB repo file"></a>3.1 Create MariaDB repo file</h3><p>Enter command:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/yum.repos.d/MariaDB.repo</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/yum.repos.d/MariaDB.repo</span></span><br></pre></td></tr></table></figure>
 
 <p>Then type or copy &amp; paste these text into it:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># MariaDB 10.4 CentOS repository list</span><br><span class="line">[mariadb]</span><br><span class="line">name = MariaDB</span><br><span class="line">baseurl = http://yum.mariadb.org/10.4/centos7-amd64</span><br><span class="line">gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB</span><br><span class="line">gpgcheck=1</span><br></pre></td></tr></table></figure>
@@ -461,19 +461,19 @@ height:50vh;
 <p><code>http://mirror.ehv.weppel.nl/mariadb/yum/10.4/centos7-amd64</code></p>
 <p>Then modify the <code>gpgkey</code> to</p>
 <p><code>http://mirror.ehv.weppel.nl/mariadb/yu,/RPM-GPG-KEY-MariaDB</code></p>
-<h3 id="3-2-Install-MariaDB-and-enable-its-service"><a href="#3-2-Install-MariaDB-and-enable-its-service" class="headerlink" title="3.2 Install MariaDB and enable its service"></a>3.2 Install MariaDB and enable its service</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install MariaDB-server MariaDB-client -y</span><br><span class="line">$ sudo systemctl <span class="built_in">start</span> mariadb.service</span><br><span class="line">$ sudo systemctl enable mariadb.service</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-Install-MariaDB-and-enable-its-service"><a href="#3-2-Install-MariaDB-and-enable-its-service" class="headerlink" title="3.2 Install MariaDB and enable its service"></a>3.2 Install MariaDB and enable its service</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install MariaDB-server MariaDB-client -y</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start mariadb.service</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl <span class="built_in">enable</span> mariadb.service</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3-3-Config-MariaDB"><a href="#3-3-Config-MariaDB" class="headerlink" title="3.3 Config MariaDB"></a>3.3 Config MariaDB</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-Config-MariaDB"><a href="#3-3-Config-MariaDB" class="headerlink" title="3.3 Config MariaDB"></a>3.3 Config MariaDB</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mysql_secure_installation</span></span><br></pre></td></tr></table></figure>
 
 <p>Follow the instructions appearing on the screen, set a root password<br>and forbid root remote login for security</p>
-<h3 id="3-4-Open-port-for-mysql"><a href="#3-4-Open-port-for-mysql" class="headerlink" title="3.4 Open port for mysql"></a>3.4 Open port for mysql</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --get-active-zones</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-Open-port-for-mysql"><a href="#3-4-Open-port-for-mysql" class="headerlink" title="3.4 Open port for mysql"></a>3.4 Open port for mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo firewall-shell --get-active-zones</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>Which could print a single public zone or a few, like <em>public</em> and<br><em>dmz</em>. Run the command below for any zone shown on the screen, replacing<br><code>&lt;zone&gt;</code> and <code>&lt;mysql_port&gt;</code> with your system’s current setup:</p>
 </blockquote>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --zone=public --add-port=<span class="number">3306</span>/tcp --permanent</span><br><span class="line">$ sudo firewall-<span class="built_in">cmd</span> --reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo firewall-shell --zone=public --add-port=3306/tcp --permanent</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo firewall-shell --reload</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="4-PHP-7-3"><a href="#4-PHP-7-3" class="headerlink" title="4. PHP 7.3"></a>4. PHP 7.3</h2><h3 id="4-1-Config-repo"><a href="#4-1-Config-repo" class="headerlink" title="4.1 Config repo"></a>4.1 Config repo</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum-config-manager --enable remi-php73</span><br></pre></td></tr></table></figure>
+<h2 id="4-PHP-7-3"><a href="#4-PHP-7-3" class="headerlink" title="4. PHP 7.3"></a>4. PHP 7.3</h2><h3 id="4-1-Config-repo"><a href="#4-1-Config-repo" class="headerlink" title="4.1 Config repo"></a>4.1 Config repo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum-config-manager --<span class="built_in">enable</span> remi-php73</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="4-2-Install-php-and-php-extensions"><a href="#4-2-Install-php-and-php-extensions" class="headerlink" title="4.2 Install php and php extensions"></a>4.2 Install php and php extensions</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install php73-php</span><br></pre></td></tr></table></figure>
 
@@ -481,22 +481,22 @@ height:50vh;
 <p>And don’t forget the composer, the dependency manager</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install composer -y</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-3-Restart-Apache"><a href="#4-3-Restart-Apache" class="headerlink" title="4.3 Restart Apache"></a>4.3 Restart Apache</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart httpd.service</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-Restart-Apache"><a href="#4-3-Restart-Apache" class="headerlink" title="4.3 Restart Apache"></a>4.3 Restart Apache</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl restart httpd.service</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="4-4-Test-php-installation"><a href="#4-4-Test-php-installation" class="headerlink" title="4.4 Test php installation"></a>4.4 Test php installation</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">echo</span> "&lt;?php phpinfo(); ?&gt;" &gt; /var/www/html/index.php</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-Test-php-installation"><a href="#4-4-Test-php-installation" class="headerlink" title="4.4 Test php installation"></a>4.4 Test php installation</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo <span class="built_in">echo</span> <span class="string">"&lt;?php phpinfo(); ?&gt;"</span> &gt; /var/www/html/index.php</span></span><br></pre></td></tr></table></figure>
 
 <p>Enter <code>http://your_ip_address/index.php</code> in browser’s address bar, if<br>successful, you can see a long page listing php’s information</p>
-<h2 id="5-phpMyAdmin"><a href="#5-phpMyAdmin" class="headerlink" title="5. phpMyAdmin"></a>5. phpMyAdmin</h2><h3 id="5-1-Install"><a href="#5-1-Install" class="headerlink" title="5.1 Install"></a>5.1 Install</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install phpMyAdmin -y</span><br></pre></td></tr></table></figure>
+<h2 id="5-phpMyAdmin"><a href="#5-phpMyAdmin" class="headerlink" title="5. phpMyAdmin"></a>5. phpMyAdmin</h2><h3 id="5-1-Install"><a href="#5-1-Install" class="headerlink" title="5.1 Install"></a>5.1 Install</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install phpMyAdmin -y</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="5-2-Config-phpMyAdmin"><a href="#5-2-Config-phpMyAdmin" class="headerlink" title="5.2 Config phpMyAdmin"></a>5.2 Config phpMyAdmin</h3><p>Open config file</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/httpd/conf.d/phpMyAdmin.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/httpd/conf.d/phpMyAdmin.conf</span></span><br></pre></td></tr></table></figure>
 
 <p>Under those <code>&lt;RequireAny&gt;</code> tags, add <code>Require all granted</code> right above the<br><code>&lt;/RequireAny&gt;</code> tags. More practically and for security, identify your ip<br>then add <code>Require ip YOUR_IP_ADDRESS</code> instead of granting all.</p>
 <p>Better to install SSL support!</p>
 <p>Then install php extensions for phpMyAdmin:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install php73-php-mbstring php73-php-mysql -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install php73-php-mbstring php73-php-mysql -y</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="5-3-Restart-Apache-to-apply-changes"><a href="#5-3-Restart-Apache-to-apply-changes" class="headerlink" title="5.3 Restart Apache to apply changes"></a>5.3 Restart Apache to apply changes</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart httpd.service</span><br></pre></td></tr></table></figure>
+<h3 id="5-3-Restart-Apache-to-apply-changes"><a href="#5-3-Restart-Apache-to-apply-changes" class="headerlink" title="5.3 Restart Apache to apply changes"></a>5.3 Restart Apache to apply changes</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl restart httpd.service</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="5-4-Test-phpMyAdmin-installation"><a href="#5-4-Test-phpMyAdmin-installation" class="headerlink" title="5.4 Test phpMyAdmin installation"></a>5.4 Test phpMyAdmin installation</h3><p>Enter <code>http://your_ip_address/phpmyadmin/</code> in address bar, log in by<br>entering mariadb’s auth you set before</p>
 
@@ -773,6 +773,16 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 11
@@ -806,12 +816,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/osi-model/" >Open Systems Interconnection(OSI) Model Explained!</a>
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/linux-dir/" >Linux Directories Description</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/linux-dir/" >Linux Directories Description</a>
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/osi-model/" >Open Systems Interconnection(OSI) Model Explained!</a>
         </li>
     
     
@@ -826,7 +836,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/install-lamp-to-centos-7/" >Install LAMP Stack on CentOS 7</a>
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspberry-pi-raspbian/" >Open Up, Install Raspbian to Raspberry Pi</a>
         </li>
     
     
@@ -836,7 +846,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspberry-pi-raspbian/" >Open Up, Install Raspbian to Raspberry Pi</a>
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/install-lamp-to-centos-7/" >Install LAMP Stack on CentOS 7</a>
         </li>
     
     
@@ -853,25 +863,25 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="FAQ"><span class="iconfont-archer">&#xe606;</span>FAQ</span>
     
+        <span class="sidebar-tag-name" data-tags="LAMP"><span class="iconfont-archer">&#xe606;</span>LAMP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Server"><span class="iconfont-archer">&#xe606;</span>Server</span>
+    
         <span class="sidebar-tag-name" data-tags="CentOS"><span class="iconfont-archer">&#xe606;</span>CentOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+    
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="Vagrant"><span class="iconfont-archer">&#xe606;</span>Vagrant</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
-        <span class="sidebar-tag-name" data-tags="LAMP"><span class="iconfont-archer">&#xe606;</span>LAMP</span>
-    
-        <span class="sidebar-tag-name" data-tags="Server"><span class="iconfont-archer">&#xe606;</span>Server</span>
-    
-        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+        <span class="sidebar-tag-name" data-tags="ComputerNetwork"><span class="iconfont-archer">&#xe606;</span>ComputerNetwork</span>
     
         <span class="sidebar-tag-name" data-tags="RaspberryPi"><span class="iconfont-archer">&#xe606;</span>RaspberryPi</span>
     
         <span class="sidebar-tag-name" data-tags="Hardware"><span class="iconfont-archer">&#xe606;</span>Hardware</span>
-    
-        <span class="sidebar-tag-name" data-tags="ComputerNetwork"><span class="iconfont-archer">&#xe606;</span>ComputerNetwork</span>
-    
-        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
     

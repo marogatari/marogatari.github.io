@@ -427,7 +427,7 @@ height:50vh;
 <h2 id="2-Boot-it-connect-it-and-expand-it"><a href="#2-Boot-it-connect-it-and-expand-it" class="headerlink" title="2. Boot it, connect it, and expand it"></a>2. Boot it, connect it, and expand it</h2><ol>
 <li>Find an Ethernet cable and connect the pi to PC.</li>
 <li>Enable network sharing in Settings.</li>
-<li>Open some cmd software and type <code>arp -a</code>.</li>
+<li>Open some shell software and type <code>arp -a</code>.</li>
 <li>Find the IP address corresponding to Pi’s MAC.</li>
 <li>Start a ssh session, use <code>root@xxx.xxx.xxx.xxx</code> and the password is <code>centos</code>.</li>
 <li><code>less README</code>, follow its advice, so just type <code>rootfs-expand</code>. Very user-friendly, isn’t it?</li>
@@ -466,7 +466,7 @@ height:50vh;
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f</span><br><span class="line">00:          -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">60: -- -- -- -- -- -- -- -- UU -- -- -- -- -- -- --</span><br><span class="line">70: -- -- -- -- -- -- -- --</span><br></pre></td></tr></table></figure>
 
 <p>It works! Let’s set the system time, for example:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">date</span> -s <span class="number">2019</span>-<span class="number">4</span>-<span class="number">10</span></span><br><span class="line">sudo <span class="built_in">date</span> -s <span class="number">14</span>:<span class="number">56</span>:<span class="number">24</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo date -s 2019-4-10</span><br><span class="line">sudo date -s 14:56:24</span><br></pre></td></tr></table></figure>
 
 <p>then type <code>sudo hwclock -w</code> to write system time and date into DS3231.</p>
 <p>Next, enter <code>sudo vim /etc/rc.local</code> to add time sync to startup tasks, add</p>
@@ -474,13 +474,13 @@ height:50vh;
 
 <p>At last, run <code>sudo chmod +x /etc/rc.d/rc.local</code> to ensure the script will be executed during boot as it suggests. Now reboot and give <code>date</code> a try.</p>
 <h2 id="5-A-little-server"><a href="#5-A-little-server" class="headerlink" title="5. A little server"></a>5. A little server</h2><p>If you browse the package <a href="http://mirror.centos.org/altarch/7/os/armhfp/Packages/" target="_blank" rel="noopener">list</a> of CentOS-altarch-armhfp, and there is no php 7 available. But I found a solution <a href="https://seven.centos.org/2018/01/php-7-2-for-centos-7-armhfp/" target="_blank" rel="noopener">here</a></p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/yum.repos.d/epel.repo &lt;&lt; EOF</span><br><span class="line">[epel]</span><br><span class="line">name=Epel rebuild <span class="keyword">for</span> armhfp</span><br><span class="line">baseurl=https://armv7.dev.centos.org/repodir/epel-pass-<span class="number">1</span>/</span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line">gpgcheck=<span class="number">0</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/yum.repos.d/epel.repo &lt;&lt; EOF</span><br><span class="line">[epel]</span><br><span class="line">name=Epel rebuild for armhfp</span><br><span class="line">baseurl=https://armv7.dev.centos.org/repodir/epel-pass-1/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
 <p>then</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/yum.repos.d/php72-testing.repo &lt;&lt; EOF</span><br><span class="line">[php72-testing]</span><br><span class="line">name=Remi php72 rebuild <span class="keyword">for</span> armhfp</span><br><span class="line">baseurl=https://armv7.dev.centos.org/repodir/community-php72-testing/</span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line">gpgcheck=<span class="number">0</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/yum.repos.d/php72-testing.repo &lt;&lt; EOF</span><br><span class="line">[php72-testing]</span><br><span class="line">name=Remi php72 rebuild for armhfp</span><br><span class="line">baseurl=https://armv7.dev.centos.org/repodir/community-php72-testing/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
 <p>finally</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/yum.repos.d/remi.repo &lt;&lt; EOF</span><br><span class="line">[remi]</span><br><span class="line">name=Remi's RPM repository <span class="keyword">for</span> Enterprise Linux <span class="number">7</span> - $basearch</span><br><span class="line">mirrorlist=http://cdn.remirepo.<span class="built_in">net</span>/enterprise/<span class="number">7</span>/remi/mirror</span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line">gpgcheck=<span class="number">1</span></span><br><span class="line">gpgkey=https://rpms.remirepo.<span class="built_in">net</span>/RPM-GPG-KEY-remi</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/yum.repos.d/remi.repo &lt;&lt; EOF</span><br><span class="line">[remi]</span><br><span class="line">name=Remi's RPM repository for Enterprise Linux 7 - $basearch</span><br><span class="line">mirrorlist=http://cdn.remirepo.net/enterprise/7/remi/mirror</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://rpms.remirepo.net/RPM-GPG-KEY-remi</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
 <p>Hola! The rest is easy.</p>
 
@@ -757,6 +757,16 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 11
@@ -790,12 +800,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/osi-model/" >Open Systems Interconnection(OSI) Model Explained!</a>
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/linux-dir/" >Linux Directories Description</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/linux-dir/" >Linux Directories Description</a>
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2019/09/06/osi-model/" >Open Systems Interconnection(OSI) Model Explained!</a>
         </li>
     
     
@@ -810,7 +820,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/install-lamp-to-centos-7/" >Install LAMP Stack on CentOS 7</a>
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspberry-pi-raspbian/" >Open Up, Install Raspbian to Raspberry Pi</a>
         </li>
     
     
@@ -820,7 +830,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/raspberry-pi-raspbian/" >Open Up, Install Raspbian to Raspberry Pi</a>
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2019/09/05/install-lamp-to-centos-7/" >Install LAMP Stack on CentOS 7</a>
         </li>
     
     
@@ -837,25 +847,25 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="FAQ"><span class="iconfont-archer">&#xe606;</span>FAQ</span>
     
+        <span class="sidebar-tag-name" data-tags="LAMP"><span class="iconfont-archer">&#xe606;</span>LAMP</span>
+    
+        <span class="sidebar-tag-name" data-tags="Server"><span class="iconfont-archer">&#xe606;</span>Server</span>
+    
         <span class="sidebar-tag-name" data-tags="CentOS"><span class="iconfont-archer">&#xe606;</span>CentOS</span>
+    
+        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+    
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="Vagrant"><span class="iconfont-archer">&#xe606;</span>Vagrant</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
-        <span class="sidebar-tag-name" data-tags="LAMP"><span class="iconfont-archer">&#xe606;</span>LAMP</span>
-    
-        <span class="sidebar-tag-name" data-tags="Server"><span class="iconfont-archer">&#xe606;</span>Server</span>
-    
-        <span class="sidebar-tag-name" data-tags="PHP"><span class="iconfont-archer">&#xe606;</span>PHP</span>
+        <span class="sidebar-tag-name" data-tags="ComputerNetwork"><span class="iconfont-archer">&#xe606;</span>ComputerNetwork</span>
     
         <span class="sidebar-tag-name" data-tags="RaspberryPi"><span class="iconfont-archer">&#xe606;</span>RaspberryPi</span>
     
         <span class="sidebar-tag-name" data-tags="Hardware"><span class="iconfont-archer">&#xe606;</span>Hardware</span>
-    
-        <span class="sidebar-tag-name" data-tags="ComputerNetwork"><span class="iconfont-archer">&#xe606;</span>ComputerNetwork</span>
-    
-        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
     
