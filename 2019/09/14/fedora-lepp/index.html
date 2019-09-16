@@ -22,7 +22,7 @@
     <meta name="description" content="Not That Available">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Remember Me, Let CentOS Run On the Raspberry Pi · Moedrian&#39;s Bron-Yr-Aur</title>
+    <title>Fedora, with Nginx, PostgreSQL and PHP · Moedrian&#39;s Bron-Yr-Aur</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Moedrian&#39;s Bron-Yr-Aur</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Remember Me, Let CentOS Run On the Raspberry Pi</a>
+                <a href="#" class="post-name">Fedora, with Nginx, PostgreSQL and PHP</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Remember Me, Let CentOS Run On the Raspberry Pi
+            Fedora, with Nginx, PostgreSQL and PHP
             <!-- 404 -->
             
         </h1>
@@ -268,22 +268,24 @@ height:50vh;
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Linux">Linux</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CentOS">CentOS</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Fedora">Fedora</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "RaspberryPi">RaspberryPi</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Nginx">Nginx</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Hardware">Hardware</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PostgreSQL">PostgreSQL</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PHP">PHP</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">716</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/09/05</span>
+                    <span class="post-intro-time">2019/09/14</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -407,82 +409,104 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="Install-CentOS-to-Raspberry-Pi-3-Model-B"><a href="#Install-CentOS-to-Raspberry-Pi-3-Model-B" class="headerlink" title="Install CentOS to Raspberry Pi 3 Model B"></a>Install CentOS to Raspberry Pi 3 Model B</h1><p><img src="raspi.jpg" alt="raspberry pi"></p>
-<h2 id="Before-you-start"><a href="#Before-you-start" class="headerlink" title="Before you start"></a>Before you start</h2><ul>
-<li>This file is based on<ul>
-<li>Windows 10</li>
-<li>Your own WiFi</li>
-<li>An Ethernet cable</li>
-</ul>
-</li>
-<li>Why CentOS? Because on April 3rd 2019 Jack encountered a bizarre bug on Raspbian. After installing php 7.2, he rebooted it and he could never connect it via ssh by neither WiFI nor Ethenet cable…</li>
-<li>Damn it!</li>
-<li><strong>And the Official wiki is <a href="https://wiki.centos.org/SpecialInterestGroup/AltArch/armhfp" target="_blank" rel="noopener">here</a></strong></li>
-</ul>
-<h2 id="1-Download-the-image"><a href="#1-Download-the-image" class="headerlink" title="1. Download the image"></a>1. Download the image</h2><ol>
-<li>Find the edition you want <a href="http://isoredirect.centos.org/altarch/7/isos/armhfp" target="_blank" rel="noopener">here</a>.</li>
-<li>Download it and use 7z to deal with it. Just rename the .raw to .img, it works! Now write it into SD card via <a href="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="noopener">Image Writer</a>.</li>
-<li>Before inserting it into Pi, create an empty file named <strong>ssh</strong> and paste it into boot partition to enable ssh connection. Just ssh, no file extension affix.</li>
-</ol>
-<h2 id="2-Boot-it-connect-it-and-expand-it"><a href="#2-Boot-it-connect-it-and-expand-it" class="headerlink" title="2. Boot it, connect it, and expand it"></a>2. Boot it, connect it, and expand it</h2><ol>
-<li>Find an Ethernet cable and connect the pi to PC.</li>
-<li>Enable network sharing in Settings.</li>
-<li>Open some shell software and type <code>arp -a</code>.</li>
-<li>Find the IP address corresponding to Pi’s MAC.</li>
-<li>Start a ssh session, use <code>root@xxx.xxx.xxx.xxx</code> and the password is <code>centos</code>.</li>
-<li><code>less README</code>, follow its advice, so just type <code>rootfs-expand</code>. Very user-friendly, isn’t it?</li>
-<li>By the way, it’s not a good idea to use root to log in, so I suggest reading <a href="../ServerConfig/secure_server.md">this file</a> to add another user that has sudo privilege.</li>
-</ol>
-<h2 id="3-Welcome-to-1969-WiFi"><a href="#3-Welcome-to-1969-WiFi" class="headerlink" title="3. Welcome to 1969, WiFi"></a>3. Welcome to 1969, WiFi</h2><ol>
-<li>It seems that the newest version of ARM CentOS has resolved WiFi firmware distribution dilemma, so just type <code>systemctl start network.service</code> and, hola, WiFi is now enabled.</li>
-<li>Type <code>nmcli d</code> and wlan0 is here.</li>
-<li>Now type <code>nmtui</code> and choose <code>Activate a connection</code>, it’s very easy to join the WiFi.</li>
-<li>After connecting to WiFi, type <code>sudo yum update -y</code> to update the system.</li>
-<li>Type <code>timedatectl list-timezones | grep Asia</code> to check the time zone, then, for example, type <code>sudo timedatectl set-timezone Asia/Shanghai</code> to set the proper time zone for your area.</li>
-</ol>
-<h2 id="4-Add-a-Real-Time-Clock-to-Raspberry-Pi"><a href="#4-Add-a-Real-Time-Clock-to-Raspberry-Pi" class="headerlink" title="4. Add a Real Time Clock to Raspberry Pi"></a>4. Add a Real Time Clock to Raspberry Pi</h2><p>DS3231 is a good choice:</p>
-<p><img src="ds3231.jpg" alt="DS3231"></p>
-<p>Or you could choose this kind of DS3231:</p>
-<p><img src="ds3231_2.jpg" alt="DS3231"></p>
-<p>And connect</p>
-<ul>
-<li><code>VCC</code> to <code>3V3(Power)</code>,</li>
-<li><code>GND</code> to <code>Ground</code>,</li>
-<li><code>SDA</code> to <code>GPIO2(SDA1 I2C)</code></li>
-<li><code>SCL</code> to <code>GPIO3(SCL1 I2C)</code></li>
-</ul>
-<p><img src="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2012/06/Raspberry-Pi-GPIO-Layout-Model-B-Plus-rotated-2700x900-1024x341.png" alt="pi gpio"></p>
-<p>Connect Pi via ssh, enter <code>sudo yum install i2c-tools -y</code> to install i2c-tools. Then enter <code>sudo vim /boot/config.txt</code>, add these two lines to enable i2c</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dtoverlay=i2c-rtc, ds3231</span><br></pre></td></tr></table></figure>
+        <h1 id="The-Abbreviation-is-FEPP"><a href="#The-Abbreviation-is-FEPP" class="headerlink" title="The Abbreviation is FEPP"></a>The Abbreviation is FEPP</h1><h2 id="Why-Fedora"><a href="#Why-Fedora" class="headerlink" title="Why Fedora"></a>Why Fedora</h2><p>New, Newer, Newest. No need to configure repos for those new software<br>releases, just <code>dnf install</code> to get satisfying newly pre-compiled binaries<br>along with familiar CentOS, or RedHat experiences.</p>
+<p>Well, practically, I don’t suggest Fedora as a server<br>environment due to its relatively short life cycle, which is approximately<br>13 months. But when the time is coming, you can <a href="https://fedoraproject.org/wiki/DNF_system_upgrade" target="_blank" rel="noopener">leap</a> at your own risk.</p>
+<h2 id="Head-to-Installation"><a href="#Head-to-Installation" class="headerlink" title="Head to Installation"></a>Head to Installation</h2><p>Before we go, make sure you have <code>sudo</code> privilege to the system.</p>
+<p>In most scenarios, Nginx works with PHP-FPM(FastCGI Process Manager),<br>to have a further understanding of PHP-FPM, you can read <a href="https://www.inmotionhosting.com/support/product-guides/wordpress-hosting/php-fpm-the-future-of-php-handling" target="_blank" rel="noopener">this article</a>.</p>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p>Install Nginx with <code>dnf</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo dnf install nginx -y</span></span><br></pre></td></tr></table></figure>
 
-<p>Enter <code>lsmod | grep i2c</code>, and the output should be like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i2c_bcm2835     16384   0</span><br><span class="line">i2c_dev         16384   0</span><br></pre></td></tr></table></figure>
+<p>Then start and enable the services with <code>systemctl</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start nginx.service</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl <span class="built_in">enable</span> nginx.service</span></span><br></pre></td></tr></table></figure>
 
-<p>Use <code>sudo vim /etc/modules-load.d/i2c.conf</code> to append the following lines to the <code>i2c.conf</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i2c-dev</span><br><span class="line">i2c-bcm2835</span><br></pre></td></tr></table></figure>
+<h3 id="PHP-FPM"><a href="#PHP-FPM" class="headerlink" title="PHP-FPM"></a>PHP-FPM</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo dnf install php php-fpm php-common -y</span></span><br></pre></td></tr></table></figure>
 
-<p>now use <code>sudo reboot</code> to reboot the Pi.</p>
-<p>Access it again via ssh or some other tools, type <code>sudo i2cdetect -y 1</code>, the output should be like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f</span><br><span class="line">00:          -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --</span><br><span class="line">60: -- -- -- -- -- -- -- -- UU -- -- -- -- -- -- --</span><br><span class="line">70: -- -- -- -- -- -- -- --</span><br></pre></td></tr></table></figure>
+<p>Also, there are lots of php modules you can patch:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo dnf install php-opcache php-pecl-apcu php-cli php-pear php-pdo \</span></span><br><span class="line">php-gd php-mbstring php-mcrypt php-xml -y</span><br></pre></td></tr></table></figure>
 
-<p>It works! Let’s set the system time, for example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo date -s 2019-4-10</span><br><span class="line">sudo date -s 14:56:24</span><br></pre></td></tr></table></figure>
+<p>Then start and enable PHP-FPM services same as Nginx:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start php-fpm.service</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl <span class="built_in">enable</span> php-fpm.service</span></span><br></pre></td></tr></table></figure>
 
-<p>then type <code>sudo hwclock -w</code> to write system time and date into DS3231.</p>
-<p>Next, enter <code>sudo vim /etc/rc.local</code> to add time sync to startup tasks, add</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo ds3231 0x68 &gt; /sys/class/i2c-adapter/new_device</span><br><span class="line">hwclock -s</span><br></pre></td></tr></table></figure>
+<p>If <code>firewalld</code> has been enable, make sure to open the ports you need,<br>you can check the status with <code>systemctl status firewalld.service</code> and<br>the list of ports with <code>sudo firewall-cmd --list-all</code>.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo firewall-cmd --add-service=http --permanent</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo firewall-cmd --add-service=https --permanent</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo firewall-cmd --reload</span></span><br></pre></td></tr></table></figure>
 
-<p>At last, run <code>sudo chmod +x /etc/rc.d/rc.local</code> to ensure the script will be executed during boot as it suggests. Now reboot and give <code>date</code> a try.</p>
-<h2 id="5-A-little-server"><a href="#5-A-little-server" class="headerlink" title="5. A little server"></a>5. A little server</h2><p>If you browse the package <a href="http://mirror.centos.org/altarch/7/os/armhfp/Packages/" target="_blank" rel="noopener">list</a> of CentOS-altarch-armhfp, and there is no php 7 available. But I found a solution <a href="https://seven.centos.org/2018/01/php-7-2-for-centos-7-armhfp/" target="_blank" rel="noopener">here</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/yum.repos.d/epel.repo &lt;&lt; EOF</span><br><span class="line">[epel]</span><br><span class="line">name=Epel rebuild for armhfp</span><br><span class="line">baseurl=https://armv7.dev.centos.org/repodir/epel-pass-1/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>Now check the installation with a php-info page:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt; /usr/share/nginx/html/php-info.php</span><br></pre></td></tr></table></figure>
 
-<p>then</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/yum.repos.d/php72-testing.repo &lt;&lt; EOF</span><br><span class="line">[php72-testing]</span><br><span class="line">name=Remi php72 rebuild for armhfp</span><br><span class="line">baseurl=https://armv7.dev.centos.org/repodir/community-php72-testing/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>And check the <code>your_server_ip/php-info.php</code> in the browser.</p>
+<p>About the configuration of Nginx, I recommend reading <a href="https://www.linode.com/docs/web-servers/nginx/how-to-configure-nginx/" target="_blank" rel="noopener">this page</a> and<br>Nginx’s official <a href="http://nginx.org/en/docs/beginners_guide.html" target="_blank" rel="noopener">Beginner’s Guide</a>. After all, it’s not a neat idea to place<br>your data under <code>/usr</code> directory, personally speaking.</p>
+<h3 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h3><p>You can easily install pre-compiled binaries from Fedora repo:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo dnf install postgersql postgresql-server -y</span></span><br></pre></td></tr></table></figure>
 
-<p>finally</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/yum.repos.d/remi.repo &lt;&lt; EOF</span><br><span class="line">[remi]</span><br><span class="line">name=Remi's RPM repository for Enterprise Linux 7 - $basearch</span><br><span class="line">mirrorlist=http://cdn.remirepo.net/enterprise/7/remi/mirror</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://rpms.remirepo.net/RPM-GPG-KEY-remi</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>then you can start its service and enable automatic startup:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start postgresql.service</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl <span class="built_in">enable</span> postgresql.service</span></span><br></pre></td></tr></table></figure>
 
-<p>Hola! The rest is easy.</p>
+<h4 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h4><p>After the installation, a user <code>postgres</code> will be created automatically.</p>
+<p>For convenience, you can grant <code>postgres</code> with <code>sudo</code> privilege, then<br>set a password for <code>postgres</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo usermod -aG wheel postgres</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo passwd postgres</span></span><br></pre></td></tr></table></figure>
+
+<p>To initialize PostgreSQL, switch to user <code>postgres</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo su - postgres</span></span><br></pre></td></tr></table></figure>
+
+<p>then run the setup command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> postgresql-setup --initdb</span></span><br><span class="line"> * Initializing database in '/var/lib/pgsql/data'</span><br><span class="line"> * Initialized, logs are in /var/lib/pgsql/initdb_postgresql.log</span><br></pre></td></tr></table></figure>
+
+<p>Now you can create a database user:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> createuser --interactive --pwprompt</span></span><br></pre></td></tr></table></figure>
+
+<p>Enter the username and password, then grant the new user with appropriate privileges.</p>
+<p>For instance,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[postgres@pencil ~]$ createuser --interactive --pwprompt</span><br><span class="line">Enter name of role to add: pipimi</span><br><span class="line">Enter password for new role: </span><br><span class="line">Enter it again:</span><br><span class="line">Shall the new role be a superuser? (y/n) n</span><br><span class="line">Shall the new role be allowed to create databases? (y/n) n</span><br><span class="line">Shall the new role be allowed to create more new roles? (y/n) n</span><br><span class="line">[postgres@pencil ~]$ createdb -O pipimi pptp</span><br></pre></td></tr></table></figure>
+
+<p>Database user <code>pipimi</code> was created and a database, which can be accessed<br>by <code>pipimi</code>, was created by <code>postgres</code>.</p>
+<p>Now edit the <code>pg_hba.conf</code> for PostgresSQL. It control the authentication<br>method for PostgreSQL users.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /var/lib/pgsql/data/pg_hba.conf</span></span><br></pre></td></tr></table></figure>
+
+<p>Change it to following content temporarily:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># TYPE  DATABASE        USER            ADDRESS                 METHOD</span><br><span class="line"> </span><br><span class="line"># &quot;local&quot; is for Unix domain socket connections only</span><br><span class="line">local   all             all                                     trust</span><br><span class="line"># IPv4 local connections:</span><br><span class="line">host    all             all             127.0.0.1/32            trust</span><br><span class="line"># IPv6 local connections:</span><br><span class="line">host    all             all             ::1/128                 trust</span><br></pre></td></tr></table></figure>
+
+<p>then save and quit,restart PostgreSQL with</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart posgresql.service</span><br></pre></td></tr></table></figure>
+
+<p>then log into the database cli by enter <code>psql</code>, and type:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> postgres <span class="keyword">with</span> <span class="keyword">password</span> <span class="string">'very_secure_password'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>enter <code>\q</code> to quit the cli interface. Now change the <code>pg_hba.conf</code> to</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># TYPE  DATABASE        USER            ADDRESS                 METHOD</span><br><span class="line"> </span><br><span class="line"># &quot;local&quot; is for Unix domain socket connections only</span><br><span class="line">local   all             all                                     password</span><br><span class="line"># IPv4 local connections:</span><br><span class="line">host    all             all             127.0.0.1/32            password</span><br><span class="line"># IPv6 local connections:</span><br><span class="line">host    all             all             ::1/128                 password</span><br></pre></td></tr></table></figure>
+
+<p>then restart its service with <code>systemctl</code> command.</p>
+<h4 id="GUI-Administration-Tool-pgAdmin-for-PostgreSQL"><a href="#GUI-Administration-Tool-pgAdmin-for-PostgreSQL" class="headerlink" title="GUI Administration Tool pgAdmin for PostgreSQL"></a>GUI Administration Tool pgAdmin for PostgreSQL</h4><p>PgAdmin is a powerful GUI tool for PostgreSQL. It is written in Python<br>and distributed as a uWSGI application. Tasks below is to run pgAdmin<br>with uWSGI and set Nginx as a proxy, so the admin page can be access<br>outside the server. That is, the pgAdmin will be configured to <a href="https://www.pgadmin.org/faq/#2" target="_blank" rel="noopener">server mode</a>.</p>
+<h5 id="Download-as-a-Python-Wheel"><a href="#Download-as-a-Python-Wheel" class="headerlink" title="Download as a Python Wheel"></a>Download as a Python Wheel</h5><p><strong>!!NOTICE!!</strong> Suppose the current system user is <code>postgres</code>.</p>
+<p>Before the next step, install python3-devel package:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo dnf install python3-devel -y</span></span><br></pre></td></tr></table></figure>
+
+<p>Create a <a href="https://marogatari.github.io/2019/09/12/python-dependency/">virtual environment</a> to install pgAdmin then activate it:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mkdir -p /opt/pgadmin</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo chown -R postgres:postgres /opt/pgadmin</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /opt/pgadmin</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> python3 -m venv . <span class="comment"># Here's a dot stands for current directory</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> bin/activate</span></span><br></pre></td></tr></table></figure>
+
+<p>Next, download pgAdmin4 from <a href="https://www.pgadmin.org/download/pgadmin-4-python-wheel/" target="_blank" rel="noopener">here</a> then install it:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(pgadmin)$</span><span class="bash"> wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v4.12/pip/pgadmin4-4.12-py2.py3-none-any.whl</span></span><br><span class="line"><span class="meta">(pgadmin)$</span><span class="bash"> pip3 install pgadmin4-4.12-py2.py3-none-any.whl</span></span><br></pre></td></tr></table></figure>
+
+<p>Yet there are some preparation <a href="https://www.pgadmin.org/docs/pgadmin4/4.12/server_deployment.html" target="_blank" rel="noopener">works</a> to do.</p>
+<p>Create a <code>config_local.py</code> alongside the existing <code>config.py</code> in the<br>directory <code>/opt/pgadmin/lib/python3.7/site-packages/pgadmin4/</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(pgadmin)$</span><span class="bash"> vim lib/python3.7/site-packages/pgadmin4/config_local.py</span></span><br></pre></td></tr></table></figure>
+
+<p>then add these lines:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOG_FILE = <span class="string">'/var/log/pgadmin4/pgadmin4.log'</span></span><br><span class="line">SQLITE_PATH = <span class="string">'/var/lib/pgadmin4/pgadmin4.db'</span></span><br><span class="line">SESSION_DB_PATH = <span class="string">'/var/lib/pgadmin4/sessions'</span></span><br><span class="line">STORAGE_DIR = <span class="string">'/var/lib/pgadmin4/storage'</span></span><br></pre></td></tr></table></figure>
+
+<p>Don’t forget to check the existence and ownership of those directories<br>and files:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(pgadmin)$</span><span class="bash"> sudo chown -R postgres:postgres /var/<span class="built_in">log</span>/pgadmin4</span></span><br><span class="line"><span class="meta">(pgadmin)$</span><span class="bash"> sudo chown -R postgres:postgres /var/lib/pgadmin4</span></span><br></pre></td></tr></table></figure>
+
+<p>Now run the <code>setup.py</code> and type the prompted email and password:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(pgadmin)$</span><span class="bash"> python3 lib/python3.7/site-packages/pgadmin4/setup.py</span></span><br></pre></td></tr></table></figure>
+
+<p>Next, install <code>uwsgi</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(pgadmin)$</span><span class="bash"> pip install uwsgi</span></span><br></pre></td></tr></table></figure>
+
+<p>if failed, check the <code>python3-devel</code> installation or reboot your machine<br>to spare enough memory to compile <code>uwsgi</code>. Now you can test it with<br>standalone uWSGI configuration:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uwsgi --http-socket 0.0.0.0:5050 \</span><br><span class="line">--processes 1 --threads 25 \</span><br><span class="line">--chdir lib/python3.7/site-packages/pgadmin4/ \</span><br><span class="line">--mount /=pgAdmin4:app</span><br></pre></td></tr></table></figure>
+
+<p>Open the browser and visit <code>server_ip_address:5050</code> to check if it works.</p>
+<p>The final step is to set Nginx to a proxy, but before that you need to<br>config systemd with uWSGI <a href="https://uwsgi-docs.readthedocs.io/en/latest/Systemd.html" target="_blank" rel="noopener">Emperor</a>.</p>
 
     </article>
     <!-- license  -->
@@ -491,17 +515,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/09/06/init-vagrant/" title= "Basic Vagrant Usage in Windows">
-                    <div class="nextTitle">Basic Vagrant Usage in Windows</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/09/05/raspberry-pi-raspbian/" title= "Open Up, Install Raspbian to Raspberry Pi">
-                    <div class="prevTitle">Open Up, Install Raspbian to Raspberry Pi</div>
+                <a href= "/2019/09/12/python-dependency/" title= "Python Dependency Management">
+                    <div class="prevTitle">Python Dependency Management</div>
                 </a>
             
         </li>
@@ -621,7 +640,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Install-CentOS-to-Raspberry-Pi-3-Model-B"><span class="toc-number">1.</span> <span class="toc-text">Install CentOS to Raspberry Pi 3 Model B</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before-you-start"><span class="toc-number">1.1.</span> <span class="toc-text">Before you start</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Download-the-image"><span class="toc-number">1.2.</span> <span class="toc-text">1. Download the image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Boot-it-connect-it-and-expand-it"><span class="toc-number">1.3.</span> <span class="toc-text">2. Boot it, connect it, and expand it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Welcome-to-1969-WiFi"><span class="toc-number">1.4.</span> <span class="toc-text">3. Welcome to 1969, WiFi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Add-a-Real-Time-Clock-to-Raspberry-Pi"><span class="toc-number">1.5.</span> <span class="toc-text">4. Add a Real Time Clock to Raspberry Pi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-A-little-server"><span class="toc-number">1.6.</span> <span class="toc-text">5. A little server</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-Abbreviation-is-FEPP"><span class="toc-number">1.</span> <span class="toc-text">The Abbreviation is FEPP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Fedora"><span class="toc-number">1.1.</span> <span class="toc-text">Why Fedora</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Head-to-Installation"><span class="toc-number">1.2.</span> <span class="toc-text">Head to Installation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx"><span class="toc-number">1.2.1.</span> <span class="toc-text">Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-FPM"><span class="toc-number">1.2.2.</span> <span class="toc-text">PHP-FPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PostgreSQL"><span class="toc-number">1.2.3.</span> <span class="toc-text">PostgreSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Initialization"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">Initialization</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GUI-Administration-Tool-pgAdmin-for-PostgreSQL"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">GUI Administration Tool pgAdmin for PostgreSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Download-as-a-Python-Wheel"><span class="toc-number">1.2.3.2.1.</span> <span class="toc-text">Download as a Python Wheel</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
